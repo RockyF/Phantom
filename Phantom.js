@@ -58,23 +58,53 @@ var phantom;
 
     var Graphics = (function () {
         function Graphics() {
+            this.drawing = false;
+            this.drawQueue = [];
         }
+        Graphics.prototype.pushMethod = function (methodName) {
+            var params = [];
+            for (var _i = 0; _i < (arguments.length - 1); _i++) {
+                params[_i] = arguments[_i + 1];
+            }
+            this.drawQueue.push({ method: methodName, params: params });
+        };
+
         Graphics.prototype.beginFill = function (color, alpha) {
             if (typeof alpha === "undefined") { alpha = 1; }
+            this.pushMethod("beginFill", color, alpha);
+        };
+
+        Graphics.prototype._beginFill = function (context, color, alpha) {
+            if (typeof alpha === "undefined") { alpha = 1; }
             this.fillStyle = ColorUtils.transToWeb(color, alpha);
+            if (this.fillStyle) {
+                context.fillStyle = this.fillStyle;
+            }
         };
 
         Graphics.prototype.drawRect = function (x, y, width, height) {
+            this.pushMethod("drawRect", x, y, width, height);
+        };
+
+        Graphics.prototype._drawRect = function (context, x, y, width, height) {
             if (this.fillStyle) {
-                this._context.fillRect(x, y, width, height);
+                context.fillRect(x, y, width, height);
             }
         };
 
         Graphics.prototype.draw = function (stage, context) {
-            if (this.fillStyle) {
-                context.fillStyle = this.fillStyle;
-                context.fillRect(x, y, width, height);
+            this.drawing = true;
+
+            var drawEntity;
+            for (var i = 0, len = this.drawQueue.length; i < len; i++) {
+                drawEntity = this.drawQueue[i];
+
+                var params = drawEntity.params;
+                params.unshift(context);
+                this[drawEntity.method].apply(this, params);
             }
+
+            this.drawing = false;
             return false;
         };
         return Graphics;

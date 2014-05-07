@@ -35,24 +35,52 @@ module phantom{
 	}
 
 	export class Graphics implements IDisplayObject{
+		drawing:boolean = false;
+
 		fillStyle:string;
 		strokeStyle:string;
 
+		drawQueue:any = [];
+
+		pushMethod(methodName:string, ...params):void{
+			this.drawQueue.push({method: methodName, params: params});
+		}
+
 		beginFill(color:number, alpha:number = 1):void{
+			this.pushMethod("beginFill", color, alpha);
+		}
+
+		private _beginFill(context:any, color:number, alpha:number = 1){
 			this.fillStyle = ColorUtils.transToWeb(color, alpha);
+			if(this.fillStyle){
+				context.fillStyle = this.fillStyle;
+			}
 		}
 
 		drawRect(x:number, y:number, width:number, height:number):void{
+			this.pushMethod("drawRect", x, y, width, height);
+		}
+
+		private _drawRect(context:any, x:number, y:number, width:number, height:number):void{
 			if(this.fillStyle){
-				this._context.fillRect(x, y, width, height);
+				context.fillRect(x, y, width, height);
 			}
+
 		}
 
 		draw(stage, context):boolean {
-			if(this.fillStyle){
-				context.fillStyle = this.fillStyle;
-				context.fillRect(x, y, width, height);
+			this.drawing = true;
+
+			var drawEntity:any;
+			for(var i:number = 0, len:number = this.drawQueue.length; i < len; i++){
+				drawEntity = this.drawQueue[i];
+
+				var params:any = drawEntity.params;
+				params.unshift(context);
+				this[drawEntity.method].apply(this, params);
 			}
+
+			this.drawing = false;
 			return false;
 		}
 	}
