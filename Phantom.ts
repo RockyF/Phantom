@@ -7,14 +7,35 @@ module phantom{
 		static canvas:any;
 		static context:any;
 
+		static stage:any;
+
 		static init(canvas:any):void{
 			Phantom.canvas = canvas;
 			Phantom.context = canvas.getContext("2d");
+
+			Phantom.stage = new Stage(Phantom.context);
 		}
 	}
 
 	export class Stage{
+		context:any;
+		private signRender:number;
 
+		frameRate:number = 30;
+
+		root:any = new DisplayObject();
+
+		constructor(context:any){
+			this.context = context;
+		}
+
+		start():void{
+			this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
+		}
+
+		onRender():void{
+			root.draw(this.context);
+		}
 	}
 
 	export class ColorUtils{
@@ -77,7 +98,7 @@ module phantom{
 
 				var params:any = drawEntity.params;
 				params.unshift(context);
-				this[drawEntity.method].apply(this, params);
+				this["_" + drawEntity.method].apply(this, params);
 			}
 
 			this.drawing = false;
@@ -89,19 +110,28 @@ module phantom{
 		draw(stage:any, context:any):boolean;
 	}
 
-	export class DisplayObject{
+	export class DisplayObject implements IDisplayObject{
 		_name:string;
 		_x:number;
 		_y:number;
+		children:any = [];
 
 		graphics:any;
 
 		constructor(){
 			this.graphics = new Graphics();
 		}
+
+		draw(stage, context):boolean {
+			return undefined;
+		}
+
+		addChild(child:any):any{
+			this.children.push(child);
+		}
 	}
 
-	export class Sprite extends DisplayObject implements IDisplayObject{
+	export class Sprite extends DisplayObject{
 		constructor(){
 			super();
 

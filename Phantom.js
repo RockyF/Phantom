@@ -15,14 +15,26 @@ var phantom;
         Phantom.init = function (canvas) {
             Phantom.canvas = canvas;
             Phantom.context = canvas.getContext("2d");
+
+            Phantom.stage = new Stage(Phantom.context);
         };
         return Phantom;
     })();
     phantom.Phantom = Phantom;
 
     var Stage = (function () {
-        function Stage() {
+        function Stage(context) {
+            this.frameRate = 30;
+            this.root = new DisplayObject();
+            this.context = context;
         }
+        Stage.prototype.start = function () {
+            this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
+        };
+
+        Stage.prototype.onRender = function () {
+            root.draw(this.context);
+        };
         return Stage;
     })();
     phantom.Stage = Stage;
@@ -101,7 +113,7 @@ var phantom;
 
                 var params = drawEntity.params;
                 params.unshift(context);
-                this[drawEntity.method].apply(this, params);
+                this["_" + drawEntity.method].apply(this, params);
             }
 
             this.drawing = false;
@@ -113,8 +125,16 @@ var phantom;
 
     var DisplayObject = (function () {
         function DisplayObject() {
+            this.children = [];
             this.graphics = new Graphics();
         }
+        DisplayObject.prototype.draw = function (stage, context) {
+            return undefined;
+        };
+
+        DisplayObject.prototype.addChild = function (child) {
+            this.children.push(child);
+        };
         return DisplayObject;
     })();
     phantom.DisplayObject = DisplayObject;
