@@ -47,11 +47,11 @@ module phantom{
 			var b:number = color % 256;
 			var g:number = (color >> 8) % 256;
 			var r:number = color >> 16;
-			return StringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
+			return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
 		}
 	}
 
-	export class StringUtils{
+	export class stringUtils{
 		static format(fmt:string, ...params):string{
 			var result:string = fmt;
 			for(var i:number = 0, len:number = params.length; i < len; i++){
@@ -78,8 +78,7 @@ module phantom{
 		displayObject:any;
 
 		fillMode:boolean = false;
-		fillStyle:string = "";
-		strokeStyle:string = "";
+		lineMode:boolean = false;
 
 		drawQueue:any = [];
 
@@ -97,8 +96,22 @@ module phantom{
 
 		private _beginFill(context:any, fillStyle:string){
 			this.fillMode = true;
-			this.fillStyle = fillStyle;
-			context.fillStyle = this.fillStyle;
+			context.fillStyle = fillStyle;
+		}
+
+		lineStyle(thickness:number = NaN, color:number = 0, alpha:number = 1.0, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
+			this.pushMethod("lineStyle", thickness, ColorUtils.transToWeb(color, alpha), pixelHinting, scaleMode, caps, joints, miterLimit);
+		}
+
+		private _lineStyle(context:any, thickness:number = NaN, lineStyle:string = "", pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
+			context.lineWidth = thickness;
+			context.lineStyle = lineStyle;
+			context.strokeStyle = lineStyle;
+			context.lineCap = caps;
+			context.lineJoin = joints;
+			context.miterLimit = miterLimit;
+
+			this.lineMode = thickness > 0;
 		}
 
 		endFill():void{
@@ -118,17 +131,24 @@ module phantom{
 
 		private _drawRect(context:any, x:number, y:number, width:number, height:number):void{
 			if(this.fillMode){
-				context.save();
-				context.translate(this.displayObject.x, this.displayObject.y);
-				context.rotate(this.displayObject.rotation);
 				context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-				context.restore();
 			}
+			if(this.lineMode){
+				context.strokeRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
+			}
+		}
+
+		public _dealRTS(context:any):void{
+			context.translate(this.displayObject.x, this.displayObject.y);
+			context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
+			context.rotate(this.displayObject.rotation);
 		}
 
 		draw(context:any):boolean {
 			this.drawing = true;
 
+			context.save();
+			this._dealRTS(context);
 			var drawEntity:any;
 			for(var i:number = 0, len:number = this.drawQueue.length; i < len; i++){
 				drawEntity = this.drawQueue[i];
@@ -139,6 +159,7 @@ module phantom{
 				}
 				this["_" + drawEntity.method].apply(this, params);
 			}
+			context.restore();
 
 			this.drawing = false;
 			return false;
@@ -156,6 +177,8 @@ module phantom{
 		width:number = 0;
 		height:number = 0;
 		rotation:number = 0;
+		scaleX:number = 1;
+		scaleY:number = 1;
 		anchorPoint:any = new Point();
 		children:any = [];
 

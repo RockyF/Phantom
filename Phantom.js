@@ -53,16 +53,16 @@ var phantom;
             var b = color % 256;
             var g = (color >> 8) % 256;
             var r = color >> 16;
-            return StringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
+            return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
         };
         return ColorUtils;
     })();
     phantom.ColorUtils = ColorUtils;
 
-    var StringUtils = (function () {
-        function StringUtils() {
+    var stringUtils = (function () {
+        function stringUtils() {
         }
-        StringUtils.format = function (fmt) {
+        stringUtils.format = function (fmt) {
             var params = [];
             for (var _i = 0; _i < (arguments.length - 1); _i++) {
                 params[_i] = arguments[_i + 1];
@@ -74,9 +74,9 @@ var phantom;
 
             return result;
         };
-        return StringUtils;
+        return stringUtils;
     })();
-    phantom.StringUtils = StringUtils;
+    phantom.stringUtils = stringUtils;
 
     var Point = (function () {
         function Point(x, y) {
@@ -95,8 +95,7 @@ var phantom;
         function Graphics(displayObject) {
             this.drawing = false;
             this.fillMode = false;
-            this.fillStyle = "";
-            this.strokeStyle = "";
+            this.lineMode = false;
             this.drawQueue = [];
             this.displayObject = displayObject;
         }
@@ -115,8 +114,37 @@ var phantom;
 
         Graphics.prototype._beginFill = function (context, fillStyle) {
             this.fillMode = true;
-            this.fillStyle = fillStyle;
-            context.fillStyle = this.fillStyle;
+            context.fillStyle = fillStyle;
+        };
+
+        Graphics.prototype.lineStyle = function (thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
+            if (typeof thickness === "undefined") { thickness = NaN; }
+            if (typeof color === "undefined") { color = 0; }
+            if (typeof alpha === "undefined") { alpha = 1.0; }
+            if (typeof pixelHinting === "undefined") { pixelHinting = false; }
+            if (typeof scaleMode === "undefined") { scaleMode = "normal"; }
+            if (typeof caps === "undefined") { caps = null; }
+            if (typeof joints === "undefined") { joints = null; }
+            if (typeof miterLimit === "undefined") { miterLimit = 3; }
+            this.pushMethod("lineStyle", thickness, ColorUtils.transToWeb(color, alpha), pixelHinting, scaleMode, caps, joints, miterLimit);
+        };
+
+        Graphics.prototype._lineStyle = function (context, thickness, lineStyle, pixelHinting, scaleMode, caps, joints, miterLimit) {
+            if (typeof thickness === "undefined") { thickness = NaN; }
+            if (typeof lineStyle === "undefined") { lineStyle = ""; }
+            if (typeof pixelHinting === "undefined") { pixelHinting = false; }
+            if (typeof scaleMode === "undefined") { scaleMode = "normal"; }
+            if (typeof caps === "undefined") { caps = null; }
+            if (typeof joints === "undefined") { joints = null; }
+            if (typeof miterLimit === "undefined") { miterLimit = 3; }
+            context.lineWidth = thickness;
+            context.lineStyle = lineStyle;
+            context.strokeStyle = lineStyle;
+            context.lineCap = caps;
+            context.lineJoin = joints;
+            context.miterLimit = miterLimit;
+
+            this.lineMode = thickness > 0;
         };
 
         Graphics.prototype.endFill = function () {
@@ -136,17 +164,24 @@ var phantom;
 
         Graphics.prototype._drawRect = function (context, x, y, width, height) {
             if (this.fillMode) {
-                context.save();
-                context.translate(this.displayObject.x, this.displayObject.y);
-                context.rotate(this.displayObject.rotation);
                 context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-                context.restore();
             }
+            if (this.lineMode) {
+                context.strokeRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
+            }
+        };
+
+        Graphics.prototype._dealRTS = function (context) {
+            context.translate(this.displayObject.x, this.displayObject.y);
+            context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
+            context.rotate(this.displayObject.rotation);
         };
 
         Graphics.prototype.draw = function (context) {
             this.drawing = true;
 
+            context.save();
+            this._dealRTS(context);
             var drawEntity;
             for (var i = 0, len = this.drawQueue.length; i < len; i++) {
                 drawEntity = this.drawQueue[i];
@@ -157,6 +192,7 @@ var phantom;
                 }
                 this["_" + drawEntity.method].apply(this, params);
             }
+            context.restore();
 
             this.drawing = false;
             return false;
@@ -172,6 +208,8 @@ var phantom;
             this.width = 0;
             this.height = 0;
             this.rotation = 0;
+            this.scaleX = 1;
+            this.scaleY = 1;
             this.anchorPoint = new Point();
             this.children = [];
         }
