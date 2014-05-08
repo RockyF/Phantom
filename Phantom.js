@@ -12,28 +12,34 @@ var phantom;
     var Phantom = (function () {
         function Phantom() {
         }
-        Phantom.init = function (canvas) {
-            Phantom.canvas = canvas;
-            Phantom.context = canvas.getContext("2d");
-
-            Phantom.stage = new Stage(Phantom.context);
-        };
         return Phantom;
     })();
     phantom.Phantom = Phantom;
 
     var Stage = (function () {
-        function Stage(context) {
+        function Stage(canvas) {
+            var _this = this;
             this.frameRate = 30;
+            this.backgroundColor = 0x888888;
             this.root = new DisplayObject();
-            this.context = context;
+            this.onRender = function () {
+                _this.context.fillStyle = ColorUtils.transToWeb(_this.backgroundColor);
+                _this.context.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
+                _this.root.draw(_this.context);
+            };
+            this.canvas = canvas;
+            this.context = this.canvas.getContext("2d");
+
+            this.start();
         }
         Stage.prototype.start = function () {
             this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
         };
 
-        Stage.prototype.onRender = function () {
-            root.draw(this.context);
+        Stage.prototype.stop = function () {
+            if (this.signRender > 0) {
+                clearInterval(this.signRender);
+            }
         };
         return Stage;
     })();
@@ -43,7 +49,11 @@ var phantom;
         function ColorUtils() {
         }
         ColorUtils.transToWeb = function (color, alpha) {
-            return StringUtils.format("#{0}{1}", Math.ceil(alpha * 256).toString(16), color.toString(16));
+            if (typeof alpha === "undefined") { alpha = 1; }
+            var b = color % 256;
+            var g = (color >> 8) % 256;
+            var r = color >> 16;
+            return StringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
         };
         return ColorUtils;
     })();
@@ -68,10 +78,27 @@ var phantom;
     })();
     phantom.StringUtils = StringUtils;
 
+    var Point = (function () {
+        function Point(x, y) {
+            if (typeof x === "undefined") { x = 0; }
+            if (typeof y === "undefined") { y = 0; }
+            this.x = 0;
+            this.y = 0;
+            this.x = x;
+            this.y = y;
+        }
+        return Point;
+    })();
+    phantom.Point = Point;
+
     var Graphics = (function () {
-        function Graphics() {
+        function Graphics(displayObject) {
             this.drawing = false;
+            this.fillMode = false;
+            this.fillStyle = "";
+            this.strokeStyle = "";
             this.drawQueue = [];
+            this.displayObject = displayObject;
         }
         Graphics.prototype.pushMethod = function (methodName) {
             var params = [];
@@ -83,28 +110,41 @@ var phantom;
 
         Graphics.prototype.beginFill = function (color, alpha) {
             if (typeof alpha === "undefined") { alpha = 1; }
-            this.pushMethod("beginFill", color, alpha);
+            this.pushMethod("beginFill", ColorUtils.transToWeb(color, alpha));
         };
 
-        Graphics.prototype._beginFill = function (context, color, alpha) {
-            if (typeof alpha === "undefined") { alpha = 1; }
-            this.fillStyle = ColorUtils.transToWeb(color, alpha);
-            if (this.fillStyle) {
-                context.fillStyle = this.fillStyle;
-            }
+        Graphics.prototype._beginFill = function (context, fillStyle) {
+            this.fillMode = true;
+            this.fillStyle = fillStyle;
+            context.fillStyle = this.fillStyle;
+        };
+
+        Graphics.prototype.endFill = function () {
+            this.pushMethod("endFill");
+        };
+
+        Graphics.prototype._endFill = function (context) {
+            this.fillMode = false;
         };
 
         Graphics.prototype.drawRect = function (x, y, width, height) {
             this.pushMethod("drawRect", x, y, width, height);
+
+            this.displayObject.width = Math.max(this.displayObject.width, x + width);
+            this.displayObject.height = Math.max(this.displayObject.height, y + height);
         };
 
         Graphics.prototype._drawRect = function (context, x, y, width, height) {
-            if (this.fillStyle) {
-                context.fillRect(x, y, width, height);
+            if (this.fillMode) {
+                context.save();
+                context.translate(this.displayObject.x, this.displayObject.y);
+                context.rotate(this.displayObject.rotation);
+                context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
+                context.restore();
             }
         };
 
-        Graphics.prototype.draw = function (stage, context) {
+        Graphics.prototype.draw = function (context) {
             this.drawing = true;
 
             var drawEntity;
@@ -112,7 +152,9 @@ var phantom;
                 drawEntity = this.drawQueue[i];
 
                 var params = drawEntity.params;
-                params.unshift(context);
+                if (params[0] != context) {
+                    params.unshift(context);
+                }
                 this["_" + drawEntity.method].apply(this, params);
             }
 
@@ -125,11 +167,21 @@ var phantom;
 
     var DisplayObject = (function () {
         function DisplayObject() {
+            this.x = 0;
+            this.y = 0;
+            this.width = 0;
+            this.height = 0;
+            this.rotation = 0;
+            this.anchorPoint = new Point();
             this.children = [];
-            this.graphics = new Graphics();
         }
-        DisplayObject.prototype.draw = function (stage, context) {
-            return undefined;
+        DisplayObject.prototype.draw = function (context) {
+            var child;
+            for (var key in this.children) {
+                child = this.children[key];
+                child.draw(context);
+            }
+            return true;
         };
 
         DisplayObject.prototype.addChild = function (child) {
@@ -143,9 +195,11 @@ var phantom;
         __extends(Sprite, _super);
         function Sprite() {
             _super.call(this);
+            this.graphics = new Graphics(this);
         }
-        Sprite.prototype.draw = function (stage, context) {
-            return undefined;
+        Sprite.prototype.draw = function (context) {
+            this.graphics.draw(context);
+            return true;
         };
         return Sprite;
     })(DisplayObject);
