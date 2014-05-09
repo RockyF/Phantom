@@ -16,10 +16,11 @@ module phantom{
 		frameRate:number = 30;
 		backgroundColor:number = 0x888888;
 
-		root:any = new DisplayObject();
+		root:any;
 
-		constructor(canvas){
+		constructor(canvas:any, root:any){
 			this.canvas = canvas;
+			this.root = root;
 			this.context = this.canvas.getContext("2d");
 
 			this.start();
@@ -39,6 +40,7 @@ module phantom{
 			this.context.fillStyle = ColorUtils.transToWeb(this.backgroundColor);
 			this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 			this.root.draw(this.context);
+			this.root.onEnterFrame();
 		}
 	}
 
@@ -59,6 +61,24 @@ module phantom{
 			}
 
 			return result;
+		}
+	}
+
+	export class Handler{
+		method:any;
+		params:any;
+
+		constructor(method:any, ...params){
+			this.method = method;
+			this.params = params;
+		}
+
+		execute():void{
+			this.method.apply(null, this.params);
+		}
+
+		executeWitd(...params):void{
+			this.method.apply(null, params.concat(this.params));
 		}
 	}
 
@@ -91,22 +111,24 @@ module phantom{
 		}
 
 		beginFill(color:number, alpha:number = 1):void{
-			this.pushMethod("beginFill", ColorUtils.transToWeb(color, alpha));
+			this.pushMethod("beginFill", color, alpha);
 		}
 
-		private _beginFill(context:any, fillStyle:string){
+		private _beginFill(context:any, color, alpha){
 			this.fillMode = true;
-			context.fillStyle = fillStyle;
+			context.fillStyle = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
 		}
 
 		lineStyle(thickness:number = NaN, color:number = 0, alpha:number = 1.0, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
-			this.pushMethod("lineStyle", thickness, ColorUtils.transToWeb(color, alpha), pixelHinting, scaleMode, caps, joints, miterLimit);
+			this.pushMethod("lineStyle", thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit);
 		}
 
-		private _lineStyle(context:any, thickness:number = NaN, lineStyle:string = "", pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
+		private _lineStyle(context:any, thickness:number = NaN, color:number = 0, alpha:number = 1.0, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
+			var style = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
+
 			context.lineWidth = thickness;
-			context.lineStyle = lineStyle;
-			context.strokeStyle = lineStyle;
+			context.lineStyle = style;
+			context.strokeStyle = style;
 			context.lineCap = caps;
 			context.lineJoin = joints;
 			context.miterLimit = miterLimit;
@@ -215,6 +237,7 @@ module phantom{
 		y:number = 0;
 		width:number = 0;
 		height:number = 0;
+		alpha:number = 1;
 		rotation:number = 0;
 		scaleX:number = 1;
 		scaleY:number = 1;
@@ -226,8 +249,8 @@ module phantom{
 			for(var key in this.children){
 				child = this.children[key];
 				child.draw(context);
+				child.onEnterFrame();
 			}
-			this.onEnterFrame();
 			return true;
 		}
 
@@ -240,7 +263,7 @@ module phantom{
 		}
 	}
 
-	export class Shpae extends DisplayObject{
+	export class Sprite extends DisplayObject{
 		graphics:any;
 
 		constructor(){
@@ -249,6 +272,7 @@ module phantom{
 		}
 
 		draw(context):boolean {
+			super.draw(context);
 			this.graphics.draw(context);
 			return true;
 		}

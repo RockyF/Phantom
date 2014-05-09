@@ -17,17 +17,18 @@ var phantom;
     phantom.Phantom = Phantom;
 
     var Stage = (function () {
-        function Stage(canvas) {
+        function Stage(canvas, root) {
             var _this = this;
             this.frameRate = 30;
             this.backgroundColor = 0x888888;
-            this.root = new DisplayObject();
             this.onRender = function () {
                 _this.context.fillStyle = ColorUtils.transToWeb(_this.backgroundColor);
                 _this.context.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
                 _this.root.draw(_this.context);
+                _this.root.onEnterFrame();
             };
             this.canvas = canvas;
+            this.root = root;
             this.context = this.canvas.getContext("2d");
 
             this.start();
@@ -78,6 +79,30 @@ var phantom;
     })();
     phantom.stringUtils = stringUtils;
 
+    var Handler = (function () {
+        function Handler(method) {
+            var params = [];
+            for (var _i = 0; _i < (arguments.length - 1); _i++) {
+                params[_i] = arguments[_i + 1];
+            }
+            this.method = method;
+            this.params = params;
+        }
+        Handler.prototype.execute = function () {
+            this.method.apply(null, this.params);
+        };
+
+        Handler.prototype.executeWitd = function () {
+            var params = [];
+            for (var _i = 0; _i < (arguments.length - 0); _i++) {
+                params[_i] = arguments[_i + 0];
+            }
+            this.method.apply(null, params.concat(this.params));
+        };
+        return Handler;
+    })();
+    phantom.Handler = Handler;
+
     var Point = (function () {
         function Point(x, y) {
             if (typeof x === "undefined") { x = 0; }
@@ -109,12 +134,12 @@ var phantom;
 
         Graphics.prototype.beginFill = function (color, alpha) {
             if (typeof alpha === "undefined") { alpha = 1; }
-            this.pushMethod("beginFill", ColorUtils.transToWeb(color, alpha));
+            this.pushMethod("beginFill", color, alpha);
         };
 
-        Graphics.prototype._beginFill = function (context, fillStyle) {
+        Graphics.prototype._beginFill = function (context, color, alpha) {
             this.fillMode = true;
-            context.fillStyle = fillStyle;
+            context.fillStyle = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
         };
 
         Graphics.prototype.lineStyle = function (thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
@@ -126,20 +151,23 @@ var phantom;
             if (typeof caps === "undefined") { caps = null; }
             if (typeof joints === "undefined") { joints = null; }
             if (typeof miterLimit === "undefined") { miterLimit = 3; }
-            this.pushMethod("lineStyle", thickness, ColorUtils.transToWeb(color, alpha), pixelHinting, scaleMode, caps, joints, miterLimit);
+            this.pushMethod("lineStyle", thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit);
         };
 
-        Graphics.prototype._lineStyle = function (context, thickness, lineStyle, pixelHinting, scaleMode, caps, joints, miterLimit) {
+        Graphics.prototype._lineStyle = function (context, thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
             if (typeof thickness === "undefined") { thickness = NaN; }
-            if (typeof lineStyle === "undefined") { lineStyle = ""; }
+            if (typeof color === "undefined") { color = 0; }
+            if (typeof alpha === "undefined") { alpha = 1.0; }
             if (typeof pixelHinting === "undefined") { pixelHinting = false; }
             if (typeof scaleMode === "undefined") { scaleMode = "normal"; }
             if (typeof caps === "undefined") { caps = null; }
             if (typeof joints === "undefined") { joints = null; }
             if (typeof miterLimit === "undefined") { miterLimit = 3; }
+            var style = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
+
             context.lineWidth = thickness;
-            context.lineStyle = lineStyle;
-            context.strokeStyle = lineStyle;
+            context.lineStyle = style;
+            context.strokeStyle = style;
             context.lineCap = caps;
             context.lineJoin = joints;
             context.miterLimit = miterLimit;
@@ -245,6 +273,7 @@ var phantom;
             this.y = 0;
             this.width = 0;
             this.height = 0;
+            this.alpha = 1;
             this.rotation = 0;
             this.scaleX = 1;
             this.scaleY = 1;
@@ -256,8 +285,8 @@ var phantom;
             for (var key in this.children) {
                 child = this.children[key];
                 child.draw(context);
+                child.onEnterFrame();
             }
-            this.onEnterFrame();
             return true;
         };
 
@@ -271,21 +300,22 @@ var phantom;
     })();
     phantom.DisplayObject = DisplayObject;
 
-    var Shpae = (function (_super) {
-        __extends(Shpae, _super);
-        function Shpae() {
+    var Sprite = (function (_super) {
+        __extends(Sprite, _super);
+        function Sprite() {
             _super.call(this);
             this.graphics = new Graphics(this);
         }
-        Shpae.prototype.draw = function (context) {
+        Sprite.prototype.draw = function (context) {
+            _super.prototype.draw.call(this, context);
             this.graphics.draw(context);
             return true;
         };
 
-        Shpae.prototype.onEnterFrame = function () {
+        Sprite.prototype.onEnterFrame = function () {
             _super.prototype.onEnterFrame.call(this);
         };
-        return Shpae;
+        return Sprite;
     })(DisplayObject);
-    phantom.Shpae = Shpae;
+    phantom.Sprite = Sprite;
 })(phantom || (phantom = {}));
