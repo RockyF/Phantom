@@ -171,6 +171,44 @@ var phantom;
             }
         };
 
+        Graphics.prototype.lineTo = function (x, y) {
+            this.pushMethod("lineTo", x, y);
+            this.displayObject.width = Math.max(this.displayObject.width, x);
+            this.displayObject.height = Math.max(this.displayObject.height, y);
+        };
+
+        Graphics.prototype._lineTo = function (context, x, y) {
+            context.lineTo(x, y);
+            context.stroke();
+        };
+
+        Graphics.prototype.moveTo = function (x, y) {
+            this.pushMethod("moveTo", x, y);
+        };
+
+        Graphics.prototype._moveTo = function (context, x, y) {
+            context.moveTo(x, y);
+        };
+
+        Graphics.prototype.drawCircle = function (x, y, r) {
+            this.pushMethod("drawCircle", x, y, r);
+
+            this.displayObject.width = Math.max(this.displayObject.width, x + r);
+            this.displayObject.height = Math.max(this.displayObject.height, y + r);
+        };
+
+        Graphics.prototype._drawCircle = function (context, x, y, r) {
+            context.beginPath();
+            context.arc(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, r, 0, Math.PI * 2, true);
+            context.closePath();
+            if (this.fillMode) {
+                context.fill();
+            }
+            if (this.lineMode) {
+                context.stroke();
+            }
+        };
+
         Graphics.prototype._dealRTS = function (context) {
             context.translate(this.displayObject.x, this.displayObject.y);
             context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
@@ -219,27 +257,35 @@ var phantom;
                 child = this.children[key];
                 child.draw(context);
             }
+            this.onEnterFrame();
             return true;
         };
 
         DisplayObject.prototype.addChild = function (child) {
             this.children.push(child);
         };
+
+        DisplayObject.prototype.onEnterFrame = function () {
+        };
         return DisplayObject;
     })();
     phantom.DisplayObject = DisplayObject;
 
-    var Sprite = (function (_super) {
-        __extends(Sprite, _super);
-        function Sprite() {
+    var Shpae = (function (_super) {
+        __extends(Shpae, _super);
+        function Shpae() {
             _super.call(this);
             this.graphics = new Graphics(this);
         }
-        Sprite.prototype.draw = function (context) {
+        Shpae.prototype.draw = function (context) {
             this.graphics.draw(context);
             return true;
         };
-        return Sprite;
+
+        Shpae.prototype.onEnterFrame = function () {
+            _super.prototype.onEnterFrame.call(this);
+        };
+        return Shpae;
     })(DisplayObject);
-    phantom.Sprite = Sprite;
+    phantom.Shpae = Shpae;
 })(phantom || (phantom = {}));

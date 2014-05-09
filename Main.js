@@ -23,9 +23,11 @@ var Test = (function (_super) {
         this.sy = 1;
         this.o = 0;
         this.onTimer = function () {
-            _this.o += 0.01;
-            _this.boxs[0].scaleX = _this.o;
-            _this.boxs[0].scaleY = _this.o;
+            _this.o += 0.05;
+
+            _this.circle.rotation = _this.o;
+            /*this.boxs[0].scaleX = this.o;
+            this.boxs[0].scaleY = this.o;*/
             /*for(var i = 0; i < 100; i++){
             var box = this.boxs[i];
             
@@ -57,16 +59,14 @@ var Test = (function (_super) {
         this.stage.root.addChild(box);
         this.boxs.push(box);
         }*/
-        var box = new Box(0xFFFFFF, 0.5, 10, 10, 0, 0);
-        box.x = 100;
-        box.y = 100;
-        this.stage.root.addChild(box);
-        this.boxs.push(box);
-
-        setInterval(this.onTimer, 1000 / 30);
+        this.circle = new Circle(20);
+        this.circle.x = 100;
+        this.circle.y = 100;
+        this.stage.root.addChild(this.circle);
+        //setInterval(this.onTimer, 1000 / 30);
     };
     return Test;
-})(phantom.Sprite);
+})(phantom.DisplayObject);
 
 var Box = (function (_super) {
     __extends(Box, _super);
@@ -75,14 +75,14 @@ var Box = (function (_super) {
         if (typeof anchorY === "undefined") { anchorY = 0; }
         _super.call(this);
 
-        this.graphics.lineStyle(1, 0xFF00, 0.5);
+        this.graphics.lineStyle(3, 0xFFFFFF, 0.5, false, "nomal", null, "round");
         this.graphics.beginFill(color, alpha);
         this.graphics.drawRect(0, 0, width, height);
         this.graphics.endFill();
         this.anchorPoint = new phantom.Point(anchorX, anchorY);
     }
     return Box;
-})(phantom.Sprite);
+})(phantom.Shpae);
 
 var TBox = (function (_super) {
     __extends(TBox, _super);
@@ -92,3 +92,25 @@ var TBox = (function (_super) {
     }
     return TBox;
 })(Box);
+
+var Circle = (function (_super) {
+    __extends(Circle, _super);
+    function Circle(r) {
+        _super.call(this);
+        this.o = 0;
+
+        this.graphics.lineStyle(1, 0xFFFFFF, 0.5);
+        this.graphics.beginFill(0xFFFFFF, 0.6);
+        this.graphics.drawCircle(0, 0, r);
+        this.graphics.moveTo(0, 0);
+        this.graphics.lineTo(r, 0);
+        this.graphics.endFill();
+    }
+    Circle.prototype.onEnterFrame = function () {
+        _super.prototype.onEnterFrame.call(this);
+        this.o += 0.05;
+
+        this.rotation = this.o;
+    };
+    return Circle;
+})(phantom.Shpae);

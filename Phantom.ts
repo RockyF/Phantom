@@ -138,6 +138,44 @@ module phantom{
 			}
 		}
 
+		lineTo(x:number, y:number):void{
+			this.pushMethod("lineTo", x, y);
+			this.displayObject.width = Math.max(this.displayObject.width, x);
+			this.displayObject.height = Math.max(this.displayObject.height, y);
+		}
+
+		private _lineTo(context:any, x:number, y:number):void{
+			context.lineTo(x, y);
+			context.stroke();
+		}
+
+		moveTo(x:number, y:number):void{
+			this.pushMethod("moveTo", x, y);
+		}
+
+		private _moveTo(context:any, x:number, y:number):void{
+			context.moveTo(x, y);
+		}
+
+		drawCircle(x:number, y:number, r:number):void{
+			this.pushMethod("drawCircle", x, y, r);
+
+			this.displayObject.width = Math.max(this.displayObject.width, x + r);
+			this.displayObject.height = Math.max(this.displayObject.height, y + r);
+		}
+
+		private _drawCircle(context:any, x:number, y:number, r:number):void{
+			context.beginPath();
+			context.arc(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, r, 0, Math.PI * 2, true);
+			context.closePath();
+			if(this.fillMode){
+				context.fill();
+			}
+			if(this.lineMode){
+				context.stroke();
+			}
+		}
+
 		public _dealRTS(context:any):void{
 			context.translate(this.displayObject.x, this.displayObject.y);
 			context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
@@ -168,6 +206,7 @@ module phantom{
 
 	export interface IDisplayObject{
 		draw(context:any):boolean;
+		onEnterFrame():void;
 	}
 
 	export class DisplayObject implements IDisplayObject{
@@ -188,15 +227,20 @@ module phantom{
 				child = this.children[key];
 				child.draw(context);
 			}
+			this.onEnterFrame();
 			return true;
 		}
 
 		addChild(child:any):any{
 			this.children.push(child);
 		}
+
+		onEnterFrame():void{
+
+		}
 	}
 
-	export class Sprite extends DisplayObject{
+	export class Shpae extends DisplayObject{
 		graphics:any;
 
 		constructor(){
@@ -207,6 +251,10 @@ module phantom{
 		draw(context):boolean {
 			this.graphics.draw(context);
 			return true;
+		}
+
+		onEnterFrame():void{
+			super.onEnterFrame();
 		}
 	}
 }
