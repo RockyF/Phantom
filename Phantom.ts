@@ -2,6 +2,10 @@
  * Created by lenovo on 14-5-7.
  */
 
+function trace(...params){
+	console.log(params.join(" "));
+}
+
 module phantom{
 	export class Phantom{
 
@@ -28,6 +32,22 @@ module phantom{
 
 		start():void{
 			this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
+			this.canvas.addEventListener("mousedown", this.onMouseDown);
+			this.canvas.addEventListener("mouseup", this.onMouseUp);
+			this.canvas.addEventListener("mousemove", this.onMouseMove);
+		}
+
+		onMouseDown=(event):void=>{
+			//console.log("onMouseDown");
+		}
+
+		onMouseUp=(event):void=>{
+			//console.log("onMouseUp");
+		}
+
+		onMouseMove=(event):void=>{
+			//console.log(event.offsetX, event.offsetY);
+			this.root.dealMouseMove(event.offsetX, event.offsetY);
 		}
 
 		stop():void{
@@ -64,13 +84,6 @@ module phantom{
 		}
 	}
 
-	export interface IEventDispacher{
-		addEventListener(typs:string, listener:any):void;
-		dispatchEvent(event:any):void;
-		hasEventListener(type:string):boolean;
-		removeEventListener(type:string, listener:any):void;
-	}
-
 	export class Point{
 		x:number = 0;
 		y:number = 0;
@@ -92,6 +105,182 @@ module phantom{
 			this.y = y;
 			this.width = width;
 			this.height = height;
+		}
+
+		containsPoint(point:any):boolean{
+			return point.x > this.x && point.y > this.y && point.x < this.x + this.width && point.y < this.y + this.height;
+		}
+	}
+
+	export interface IDisplayObject{
+		draw(context:any):boolean;
+		onEnterFrame():void;
+	}
+
+	export class Event{
+		type:string;
+
+		constructor(type:string){
+			this.type = type;
+		}
+	}
+
+	export class MouseEvent extends Event{
+		static CLICK:string = "click";
+		static BOUBLE_CLICK:string = "doubleClick";
+		static MOUSE_DOWN:string = "mouseDown";
+		static MOUSE_MOVE:string = "mouseMove";
+		static MOUSE_UP:string = "mouseUp";
+		static MOUSE_OUT:string = "mouseOut";
+		static MOUSE_OVER:string = "mouseOver";
+		static MOUSE_WHLEEL:string = "mouseWheel";
+		static ROLE_OUT:string = "rollOut";
+		static ROLE_OVER:string = "rollOver";
+
+		localX:number;
+		localY:number;
+
+		altKey:boolean;
+		shiftKey:boolean;
+		ctrlKey:boolean;
+
+		buttonDown:boolean;
+		delta:number;
+	}
+
+	export interface IEventDispatcher{
+		addEventListener(typs:string, listener:any):void;
+		dispatchEvent(event:any):void;
+		hasEventListener(type:string):boolean;
+		removeEventListener(type:string, listener:any):void;
+	}
+
+	export class EventDispatcher implements IEventDispatcher{
+		listenersMap:any = [];
+		target:any;
+
+		constructor(target:any = null){
+			this.target = target;
+		}
+
+		addEventListener(type:string, listener:any):void {
+			var listeners = this.listenersMap[type];
+			if(!listeners){
+				listeners = this.listenersMap[type] = [];
+			}
+			listeners.push(listener);
+		}
+
+		dispatchEvent(event:any):void {
+			var listeners = this.listenersMap[event.type];
+			if(listeners){
+				for(var key in listeners){
+					var listener = listeners[key];
+					listener.call(this, event);
+				}
+			}
+		}
+
+		hasEventListener(type:string):boolean {
+			return this.listenersMap[type];
+		}
+
+		removeEventListener(type:string, listener:any):void {
+			var listeners = this.listenersMap[type];
+			if(listeners){
+				var index = listeners.indexOf(listener);
+				listeners.splice(index, 1);
+			}
+		}
+	}
+
+	export class DisplayObject extends EventDispatcher implements IDisplayObject{
+		name:string;
+		x:number = 0;
+		y:number = 0;
+		width:number = 0;
+		height:number = 0;
+		alpha:number = 1;
+		rotation:number = 0;
+		visible:boolean = true;
+		scaleX:number = 1;
+		scaleY:number = 1;
+		anchorPoint:any = new Point();
+
+		mouseX:number;
+		mouseY:number;
+		mouseEnable:boolean = true;
+		mouseChildren:boolean = true;
+
+		children:any = [];
+
+		draw(context):boolean {
+			var child:any;
+			for(var key in this.children){
+				child = this.children[key];
+				child.draw(context);
+				child.onEnterFrame();
+			}
+			return true;
+		}
+
+		dealMouseMove(mouseX:number, mouseY:number):void{
+			this.mouseX = mouseX;
+			this.mouseY = mouseY;
+
+			var attacked:boolean = this.hitTest(this.mouseX, this.mouseY);
+			//trace(attacked);
+			if(attacked){
+				if(this.mouseEnable){
+					var event:any = new MouseEvent(MouseEvent.MOUSE_MOVE);
+					event.localX = this.mouseX - this.x;
+					event.localY = this.mouseY - this.y;
+					this.dispatchEvent(event);
+				}
+
+				if(this.mouseChildren){
+					var child:any;
+					for(var key in this.children){
+						child = this.children[key];
+						child.dealMouseMove(this.mouseX, this.mouseY);
+					}
+				}
+			}
+		}
+
+		onEnterFrame():void{
+
+		}
+
+		addChild(child:any):any{
+			this.children.push(child);
+		}
+
+		getRect():any{
+			return new Rect(this.x, this.y, this.width, this.height);
+		}
+
+		hitTest(x:number, y:number):boolean{
+			return x > this.x && y > this.y && x < this.x + this.width && y < this.y + this.height;
+		}
+	}
+
+	export class Sprite extends DisplayObject{
+		graphics:any;
+
+		constructor(){
+			super();
+			this.graphics = new Graphics(this);
+		}
+
+		draw(context):boolean {
+			super.draw(context);
+			this.graphics.draw(context);
+			return true;
+		}
+
+		onEnterFrame():void{
+			super.onEnterFrame();
 		}
 	}
 
@@ -229,108 +418,6 @@ module phantom{
 
 			this.drawing = false;
 			return true;
-		}
-	}
-
-	export interface IDisplayObject{
-		draw(context:any):boolean;
-		onEnterFrame():void;
-	}
-
-	export class Event{
-		type:string;
-		params:any;
-	}
-
-	export class EventDispater implements IEventDispacher{
-		listenersMap:any = [];
-		target:any;
-
-		constructor(target:any = null){
-			this.target = target;
-		}
-
-		addEventListener(type:string, listener:any):void {
-			var listeners = this.listenersMap[type];
-			if(listeners){
-				listeners.push(listener);
-			}else{
-				this.listenersMap[type] = [];
-			}
-		}
-
-		dispatchEvent(event:any):void {
-			var listeners = this.listenersMap[event.type];
-			if(listeners){
-				for(var key in listeners){
-					var listener = listeners[key];
-					listener.call(this, event);
-				}
-			}
-		}
-
-		hasEventListener(type:string):boolean {
-			return this.listenersMap[type];
-		}
-
-		removeEventListener(type:string, listener:any):void {
-			var listeners = this.listenersMap[type];
-			if(listeners){
-				var index = listeners.indexOf(listener);
-				listeners.splice(index, 1);
-			}
-		}
-	}
-
-	export class DisplayObject extends EventDispater implements IDisplayObject{
-		name:string;
-		x:number = 0;
-		y:number = 0;
-		width:number = 0;
-		height:number = 0;
-		alpha:number = 1;
-		rotation:number = 0;
-		visible:boolean = true;
-		scaleX:number = 1;
-		scaleY:number = 1;
-		anchorPoint:any = new Point();
-		children:any = [];
-
-		draw(context):boolean {
-			var child:any;
-			for(var key in this.children){
-				child = this.children[key];
-				child.draw(context);
-				child.onEnterFrame();
-			}
-			return true;
-		}
-
-		addChild(child:any):any{
-			this.children.push(child);
-		}
-
-		onEnterFrame():void{
-
-		}
-	}
-
-	export class Sprite extends DisplayObject{
-		graphics:any;
-
-		constructor(){
-			super();
-			this.graphics = new Graphics(this);
-		}
-
-		draw(context):boolean {
-			super.draw(context);
-			this.graphics.draw(context);
-			return true;
-		}
-
-		onEnterFrame():void{
-			super.onEnterFrame();
 		}
 	}
 }

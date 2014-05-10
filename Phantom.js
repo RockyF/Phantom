@@ -7,6 +7,14 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+function trace() {
+    var params = [];
+    for (var _i = 0; _i < (arguments.length - 0); _i++) {
+        params[_i] = arguments[_i + 0];
+    }
+    console.log(params.join(" "));
+}
+
 var phantom;
 (function (phantom) {
     var Phantom = (function () {
@@ -21,6 +29,16 @@ var phantom;
             var _this = this;
             this.frameRate = 30;
             this.backgroundColor = 0x888888;
+            this.onMouseDown = function (event) {
+                //console.log("onMouseDown");
+            };
+            this.onMouseUp = function (event) {
+                //console.log("onMouseUp");
+            };
+            this.onMouseMove = function (event) {
+                //console.log(event.offsetX, event.offsetY);
+                _this.root.dealMouseMove(event.offsetX, event.offsetY);
+            };
             this.onRender = function () {
                 _this.context.fillStyle = ColorUtils.transToWeb(_this.backgroundColor);
                 _this.context.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
@@ -35,6 +53,9 @@ var phantom;
         }
         Stage.prototype.start = function () {
             this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
+            this.canvas.addEventListener("mousedown", this.onMouseDown);
+            this.canvas.addEventListener("mouseup", this.onMouseUp);
+            this.canvas.addEventListener("mousemove", this.onMouseMove);
         };
 
         Stage.prototype.stop = function () {
@@ -107,9 +128,168 @@ var phantom;
             this.width = width;
             this.height = height;
         }
+        Rect.prototype.containsPoint = function (point) {
+            return point.x > this.x && point.y > this.y && point.x < this.x + this.width && point.y < this.y + this.height;
+        };
         return Rect;
     })();
     phantom.Rect = Rect;
+
+    var Event = (function () {
+        function Event(type) {
+            this.type = type;
+        }
+        return Event;
+    })();
+    phantom.Event = Event;
+
+    var MouseEvent = (function (_super) {
+        __extends(MouseEvent, _super);
+        function MouseEvent() {
+            _super.apply(this, arguments);
+        }
+        MouseEvent.CLICK = "click";
+        MouseEvent.BOUBLE_CLICK = "doubleClick";
+        MouseEvent.MOUSE_DOWN = "mouseDown";
+        MouseEvent.MOUSE_MOVE = "mouseMove";
+        MouseEvent.MOUSE_UP = "mouseUp";
+        MouseEvent.MOUSE_OUT = "mouseOut";
+        MouseEvent.MOUSE_OVER = "mouseOver";
+        MouseEvent.MOUSE_WHLEEL = "mouseWheel";
+        MouseEvent.ROLE_OUT = "rollOut";
+        MouseEvent.ROLE_OVER = "rollOver";
+        return MouseEvent;
+    })(Event);
+    phantom.MouseEvent = MouseEvent;
+
+    var EventDispatcher = (function () {
+        function EventDispatcher(target) {
+            if (typeof target === "undefined") { target = null; }
+            this.listenersMap = [];
+            this.target = target;
+        }
+        EventDispatcher.prototype.addEventListener = function (type, listener) {
+            var listeners = this.listenersMap[type];
+            if (!listeners) {
+                listeners = this.listenersMap[type] = [];
+            }
+            listeners.push(listener);
+        };
+
+        EventDispatcher.prototype.dispatchEvent = function (event) {
+            var listeners = this.listenersMap[event.type];
+            if (listeners) {
+                for (var key in listeners) {
+                    var listener = listeners[key];
+                    listener.call(this, event);
+                }
+            }
+        };
+
+        EventDispatcher.prototype.hasEventListener = function (type) {
+            return this.listenersMap[type];
+        };
+
+        EventDispatcher.prototype.removeEventListener = function (type, listener) {
+            var listeners = this.listenersMap[type];
+            if (listeners) {
+                var index = listeners.indexOf(listener);
+                listeners.splice(index, 1);
+            }
+        };
+        return EventDispatcher;
+    })();
+    phantom.EventDispatcher = EventDispatcher;
+
+    var DisplayObject = (function (_super) {
+        __extends(DisplayObject, _super);
+        function DisplayObject() {
+            _super.apply(this, arguments);
+            this.x = 0;
+            this.y = 0;
+            this.width = 0;
+            this.height = 0;
+            this.alpha = 1;
+            this.rotation = 0;
+            this.visible = true;
+            this.scaleX = 1;
+            this.scaleY = 1;
+            this.anchorPoint = new Point();
+            this.mouseEnable = true;
+            this.mouseChildren = true;
+            this.children = [];
+        }
+        DisplayObject.prototype.draw = function (context) {
+            var child;
+            for (var key in this.children) {
+                child = this.children[key];
+                child.draw(context);
+                child.onEnterFrame();
+            }
+            return true;
+        };
+
+        DisplayObject.prototype.dealMouseMove = function (mouseX, mouseY) {
+            this.mouseX = mouseX;
+            this.mouseY = mouseY;
+
+            var attacked = this.hitTest(this.mouseX, this.mouseY);
+
+            //trace(attacked);
+            if (attacked) {
+                if (this.mouseEnable) {
+                    var event = new MouseEvent(MouseEvent.MOUSE_MOVE);
+                    event.localX = this.mouseX - this.x;
+                    event.localY = this.mouseY - this.y;
+                    this.dispatchEvent(event);
+                }
+
+                if (this.mouseChildren) {
+                    var child;
+                    for (var key in this.children) {
+                        child = this.children[key];
+                        child.dealMouseMove(this.mouseX, this.mouseY);
+                    }
+                }
+            }
+        };
+
+        DisplayObject.prototype.onEnterFrame = function () {
+        };
+
+        DisplayObject.prototype.addChild = function (child) {
+            this.children.push(child);
+        };
+
+        DisplayObject.prototype.getRect = function () {
+            return new Rect(this.x, this.y, this.width, this.height);
+        };
+
+        DisplayObject.prototype.hitTest = function (x, y) {
+            return x > this.x && y > this.y && x < this.x + this.width && y < this.y + this.height;
+        };
+        return DisplayObject;
+    })(EventDispatcher);
+    phantom.DisplayObject = DisplayObject;
+
+    var Sprite = (function (_super) {
+        __extends(Sprite, _super);
+        function Sprite() {
+            _super.call(this);
+            this.graphics = new Graphics(this);
+        }
+        Sprite.prototype.draw = function (context) {
+            _super.prototype.draw.call(this, context);
+            this.graphics.draw(context);
+            return true;
+        };
+
+        Sprite.prototype.onEnterFrame = function () {
+            _super.prototype.onEnterFrame.call(this);
+        };
+        return Sprite;
+    })(DisplayObject);
+    phantom.Sprite = Sprite;
 
     var Graphics = (function () {
         function Graphics(displayObject) {
@@ -264,106 +444,4 @@ var phantom;
         return Graphics;
     })();
     phantom.Graphics = Graphics;
-
-    var Event = (function () {
-        function Event() {
-        }
-        return Event;
-    })();
-    phantom.Event = Event;
-
-    var EventDispater = (function () {
-        function EventDispater(target) {
-            if (typeof target === "undefined") { target = null; }
-            this.listenersMap = [];
-            this.target = target;
-        }
-        EventDispater.prototype.addEventListener = function (type, listener) {
-            var listeners = this.listenersMap[type];
-            if (listeners) {
-                listeners.push(listener);
-            } else {
-                this.listenersMap[type] = [];
-            }
-        };
-
-        EventDispater.prototype.dispatchEvent = function (event) {
-            var listeners = this.listenersMap[event.type];
-            if (listeners) {
-                for (var key in listeners) {
-                    var listener = listeners[key];
-                    listener.call(this, event);
-                }
-            }
-        };
-
-        EventDispater.prototype.hasEventListener = function (type) {
-            return this.listenersMap[type];
-        };
-
-        EventDispater.prototype.removeEventListener = function (type, listener) {
-            var listeners = this.listenersMap[type];
-            if (listeners) {
-                var index = listeners.indexOf(listener);
-                listeners.splice(index, 1);
-            }
-        };
-        return EventDispater;
-    })();
-    phantom.EventDispater = EventDispater;
-
-    var DisplayObject = (function (_super) {
-        __extends(DisplayObject, _super);
-        function DisplayObject() {
-            _super.apply(this, arguments);
-            this.x = 0;
-            this.y = 0;
-            this.width = 0;
-            this.height = 0;
-            this.alpha = 1;
-            this.rotation = 0;
-            this.visible = true;
-            this.scaleX = 1;
-            this.scaleY = 1;
-            this.anchorPoint = new Point();
-            this.children = [];
-        }
-        DisplayObject.prototype.draw = function (context) {
-            var child;
-            for (var key in this.children) {
-                child = this.children[key];
-                child.draw(context);
-                child.onEnterFrame();
-            }
-            return true;
-        };
-
-        DisplayObject.prototype.addChild = function (child) {
-            this.children.push(child);
-        };
-
-        DisplayObject.prototype.onEnterFrame = function () {
-        };
-        return DisplayObject;
-    })(EventDispater);
-    phantom.DisplayObject = DisplayObject;
-
-    var Sprite = (function (_super) {
-        __extends(Sprite, _super);
-        function Sprite() {
-            _super.call(this);
-            this.graphics = new Graphics(this);
-        }
-        Sprite.prototype.draw = function (context) {
-            _super.prototype.draw.call(this, context);
-            this.graphics.draw(context);
-            return true;
-        };
-
-        Sprite.prototype.onEnterFrame = function () {
-            _super.prototype.onEnterFrame.call(this);
-        };
-        return Sprite;
-    })(DisplayObject);
-    phantom.Sprite = Sprite;
 })(phantom || (phantom = {}));

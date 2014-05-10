@@ -19,6 +19,8 @@ var Test = (function (_super) {
         _super.call(this);
         this.boxs = [];
         this.canvas = canvas;
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
         this.stage = new phantom.Stage(canvas, this);
         this.init();
     }
@@ -29,9 +31,14 @@ var Test = (function (_super) {
         this.circle = new Circle(20);
         this.circle.x = 100;
         this.circle.y = 100;
+        this.circle.addEventListener(phantom.MouseEvent.MOUSE_MOVE, this.onMouseMove);
 
         //this.circle.alpha = 0.5;
         this.addChild(this.circle);
+    };
+
+    Test.prototype.onMouseMove = function (event) {
+        console.log(event.localX, event.localY);
     };
     return Test;
 })(phantom.Sprite);

@@ -17,6 +17,8 @@ class Test extends phantom.Sprite{
 	constructor(canvas:any){
 		super();
 		this.canvas = canvas;
+		this.width = this.canvas.width;
+		this.height = this.canvas.height;
 		this.stage = new phantom.Stage(canvas, this);
 		this.init();
 	}
@@ -29,8 +31,13 @@ class Test extends phantom.Sprite{
 		this.circle = new Circle(20);
 		this.circle.x = 100;
 		this.circle.y = 100;
+		this.circle.addEventListener(phantom.MouseEvent.MOUSE_MOVE, this.onMouseMove);
 		//this.circle.alpha = 0.5;
 		this.addChild(this.circle);
+	}
+
+	onMouseMove(event):void{
+		console.log(event.localX, event.localY);
 	}
 
 }
