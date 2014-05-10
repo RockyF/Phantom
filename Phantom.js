@@ -215,6 +215,7 @@ var phantom;
             this.scaleX = 1;
             this.scaleY = 1;
             this.anchorPoint = new Point();
+            this.drawBound = new Rect();
             this.mouseEnable = true;
             this.mouseChildren = true;
             this.children = [];

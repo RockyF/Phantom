@@ -207,6 +207,8 @@ module phantom{
 		scaleY:number = 1;
 		anchorPoint:any = new Point();
 
+		drawBound:any = new Rect();
+
 		mouseX:number;
 		mouseY:number;
 		mouseEnable:boolean = true;
@@ -300,6 +302,20 @@ module phantom{
 
 		pushMethod(methodName:string, ...params):void{
 			this.drawQueue.push({method: methodName, params: params});
+		}
+
+		clear():void{
+			this.drawQueue.splice(0, this.drawQueue.length);
+
+			context.lineWidth = 1;
+			context.lineStyle = "#000000";
+			context.strokeStyle = "#000000";
+			context.lineCap = "";
+			context.lineJoin = "";
+			context.miterLimit = "";
+
+			this.fillMode = false;
+			this.lineMode = false;
 		}
 
 		beginFill(color:number, alpha:number = 1):void{
