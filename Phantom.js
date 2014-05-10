@@ -79,30 +79,6 @@ var phantom;
     })();
     phantom.stringUtils = stringUtils;
 
-    var Handler = (function () {
-        function Handler(method) {
-            var params = [];
-            for (var _i = 0; _i < (arguments.length - 1); _i++) {
-                params[_i] = arguments[_i + 1];
-            }
-            this.method = method;
-            this.params = params;
-        }
-        Handler.prototype.execute = function () {
-            this.method.apply(null, this.params);
-        };
-
-        Handler.prototype.executeWitd = function () {
-            var params = [];
-            for (var _i = 0; _i < (arguments.length - 0); _i++) {
-                params[_i] = arguments[_i + 0];
-            }
-            this.method.apply(null, params.concat(this.params));
-        };
-        return Handler;
-    })();
-    phantom.Handler = Handler;
-
     var Point = (function () {
         function Point(x, y) {
             if (typeof x === "undefined") { x = 0; }
@@ -115,6 +91,25 @@ var phantom;
         return Point;
     })();
     phantom.Point = Point;
+
+    var Rect = (function () {
+        function Rect(x, y, width, height) {
+            if (typeof x === "undefined") { x = 0; }
+            if (typeof y === "undefined") { y = 0; }
+            if (typeof width === "undefined") { width = 0; }
+            if (typeof height === "undefined") { height = 0; }
+            this.x = 0;
+            this.y = 0;
+            this.width = 0;
+            this.height = 0;
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
+        return Rect;
+    })();
+    phantom.Rect = Rect;
 
     var Graphics = (function () {
         function Graphics(displayObject) {
@@ -244,6 +239,9 @@ var phantom;
         };
 
         Graphics.prototype.draw = function (context) {
+            if (this.displayObject.alpha == 0 || !this.displayObject.visible) {
+                return false;
+            }
             this.drawing = true;
 
             context.save();
@@ -261,20 +259,70 @@ var phantom;
             context.restore();
 
             this.drawing = false;
-            return false;
+            return true;
         };
         return Graphics;
     })();
     phantom.Graphics = Graphics;
 
-    var DisplayObject = (function () {
+    var Event = (function () {
+        function Event() {
+        }
+        return Event;
+    })();
+    phantom.Event = Event;
+
+    var EventDispater = (function () {
+        function EventDispater(target) {
+            if (typeof target === "undefined") { target = null; }
+            this.listenersMap = [];
+            this.target = target;
+        }
+        EventDispater.prototype.addEventListener = function (type, listener) {
+            var listeners = this.listenersMap[type];
+            if (listeners) {
+                listeners.push(listener);
+            } else {
+                this.listenersMap[type] = [];
+            }
+        };
+
+        EventDispater.prototype.dispatchEvent = function (event) {
+            var listeners = this.listenersMap[event.type];
+            if (listeners) {
+                for (var key in listeners) {
+                    var listener = listeners[key];
+                    listener.call(this, event);
+                }
+            }
+        };
+
+        EventDispater.prototype.hasEventListener = function (type) {
+            return this.listenersMap[type];
+        };
+
+        EventDispater.prototype.removeEventListener = function (type, listener) {
+            var listeners = this.listenersMap[type];
+            if (listeners) {
+                var index = listeners.indexOf(listener);
+                listeners.splice(index, 1);
+            }
+        };
+        return EventDispater;
+    })();
+    phantom.EventDispater = EventDispater;
+
+    var DisplayObject = (function (_super) {
+        __extends(DisplayObject, _super);
         function DisplayObject() {
+            _super.apply(this, arguments);
             this.x = 0;
             this.y = 0;
             this.width = 0;
             this.height = 0;
             this.alpha = 1;
             this.rotation = 0;
+            this.visible = true;
             this.scaleX = 1;
             this.scaleY = 1;
             this.anchorPoint = new Point();
@@ -297,7 +345,7 @@ var phantom;
         DisplayObject.prototype.onEnterFrame = function () {
         };
         return DisplayObject;
-    })();
+    })(EventDispater);
     phantom.DisplayObject = DisplayObject;
 
     var Sprite = (function (_super) {

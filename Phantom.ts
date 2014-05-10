@@ -64,22 +64,11 @@ module phantom{
 		}
 	}
 
-	export class Handler{
-		method:any;
-		params:any;
-
-		constructor(method:any, ...params){
-			this.method = method;
-			this.params = params;
-		}
-
-		execute():void{
-			this.method.apply(null, this.params);
-		}
-
-		executeWitd(...params):void{
-			this.method.apply(null, params.concat(this.params));
-		}
+	export interface IEventDispacher{
+		addEventListener(typs:string, listener:any):void;
+		dispatchEvent(event:any):void;
+		hasEventListener(type:string):boolean;
+		removeEventListener(type:string, listener:any):void;
 	}
 
 	export class Point{
@@ -89,6 +78,20 @@ module phantom{
 		constructor(x:number = 0, y:number = 0){
 			this.x = x;
 			this.y = y;
+		}
+	}
+
+	export class Rect{
+		x:number = 0;
+		y:number = 0;
+		width:number = 0;
+		height:number = 0;
+
+		constructor(x:number = 0, y:number = 0, width:number = 0, height:number = 0){
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
 		}
 	}
 
@@ -205,6 +208,9 @@ module phantom{
 		}
 
 		draw(context:any):boolean {
+			if(this.displayObject.alpha == 0 || !this.displayObject.visible){
+				return false;
+			}
 			this.drawing = true;
 
 			context.save();
@@ -222,7 +228,7 @@ module phantom{
 			context.restore();
 
 			this.drawing = false;
-			return false;
+			return true;
 		}
 	}
 
@@ -231,7 +237,52 @@ module phantom{
 		onEnterFrame():void;
 	}
 
-	export class DisplayObject implements IDisplayObject{
+	export class Event{
+		type:string;
+		params:any;
+	}
+
+	export class EventDispater implements IEventDispacher{
+		listenersMap:any = [];
+		target:any;
+
+		constructor(target:any = null){
+			this.target = target;
+		}
+
+		addEventListener(type:string, listener:any):void {
+			var listeners = this.listenersMap[type];
+			if(listeners){
+				listeners.push(listener);
+			}else{
+				this.listenersMap[type] = [];
+			}
+		}
+
+		dispatchEvent(event:any):void {
+			var listeners = this.listenersMap[event.type];
+			if(listeners){
+				for(var key in listeners){
+					var listener = listeners[key];
+					listener.call(this, event);
+				}
+			}
+		}
+
+		hasEventListener(type:string):boolean {
+			return this.listenersMap[type];
+		}
+
+		removeEventListener(type:string, listener:any):void {
+			var listeners = this.listenersMap[type];
+			if(listeners){
+				var index = listeners.indexOf(listener);
+				listeners.splice(index, 1);
+			}
+		}
+	}
+
+	export class DisplayObject extends EventDispater implements IDisplayObject{
 		name:string;
 		x:number = 0;
 		y:number = 0;
@@ -239,6 +290,7 @@ module phantom{
 		height:number = 0;
 		alpha:number = 1;
 		rotation:number = 0;
+		visible:boolean = true;
 		scaleX:number = 1;
 		scaleY:number = 1;
 		anchorPoint:any = new Point();
