@@ -6,6 +6,7 @@
 window.onload = function(){
 	var canvas = document.getElementById('canvasStage');
 	new Test(canvas);
+	var a = new CanvasRenderingContext2D();
 };
 
 class Test extends phantom.Sprite{

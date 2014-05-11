@@ -11,6 +11,7 @@ var __extends = this.__extends || function (d, b) {
 window.onload = function () {
     var canvas = document.getElementById('canvasStage');
     new Test(canvas);
+    var a = new CanvasRenderingContext2D();
 };
 
 var Test = (function (_super) {

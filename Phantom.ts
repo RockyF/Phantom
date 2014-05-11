@@ -26,6 +26,8 @@ module phantom{
 			this.canvas = canvas;
 			this.root = root;
 			this.context = this.canvas.getContext("2d");
+			Graphics.context = this.context;
+			DisplayObject.context = this.context;
 
 			this.start();
 		}
@@ -59,7 +61,7 @@ module phantom{
 		onRender=()=>{
 			this.context.fillStyle = ColorUtils.transToWeb(this.backgroundColor);
 			this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
-			this.root.draw(this.context);
+			this.root.draw();
 			this.root.onEnterFrame();
 		}
 	}
@@ -109,6 +111,52 @@ module phantom{
 
 		containsPoint(point:any):boolean{
 			return point.x > this.x && point.y > this.y && point.x < this.x + this.width && point.y < this.y + this.height;
+		}
+	}
+
+	export class Color{
+		static BLACK:Color = new Color(0);
+		static WHITE:Color = new Color(0xFFFFFF);
+
+		color:number;
+		alpha:number;
+
+		constructor(color:number, alpha:number = 1){
+			this.color = color;
+			this.alpha = alpha;
+		}
+
+		toWeb():string{
+			var b:number = this.color % 256;
+			var g:number = (this.color >> 8) % 256;
+			var r:number = this.color >> 16;
+			return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, this.alpha);
+		}
+
+		toHex():string{
+			return "#" + this.color.toString(16);
+		}
+
+		fromWeb(value:string):void{
+			value = value.substr(value.indexOf("(") + 1, value.lastIndexOf(")"));
+			var arr = value.split(",");
+			var r:number = parseInt(arr[0]);
+			var g:number = parseInt(arr[1]);
+			var b:number = parseInt(arr[2]);
+			var a:number = parseFloat(arr[3]);
+
+			this.color = r << 16 + g << 8 + b;
+			this.alpha = a;
+		}
+
+		fromHex(value:string):void{
+			var index = value.indexOf("#");
+			if(index >= 0){
+				value = value.substr(1);
+			}
+
+			this.color = parseInt(value, 16);
+			this.alpha = 0;
 		}
 	}
 
@@ -195,6 +243,8 @@ module phantom{
 	}
 
 	export class DisplayObject extends EventDispatcher implements IDisplayObject{
+		static context:any;
+
 		name:string;
 		x:number = 0;
 		y:number = 0;
@@ -216,11 +266,11 @@ module phantom{
 
 		children:any = [];
 
-		draw(context):boolean {
+		draw():boolean {
 			var child:any;
 			for(var key in this.children){
 				child = this.children[key];
-				child.draw(context);
+				child.draw();
 				child.onEnterFrame();
 			}
 			return true;
@@ -265,21 +315,56 @@ module phantom{
 		hitTest(x:number, y:number):boolean{
 			return x > this.x && y > this.y && x < this.x + this.width && y < this.y + this.height;
 		}
+
+		public dealRTS():void{
+			context.translate(this.x, this.y);
+			context.scale(this.scaleX, this.scaleY);
+			context.rotate(this.rotation);
+		}
 	}
 
-	export class Sprite extends DisplayObject{
+	export class Shape extends DisplayObject{
+		fillColor:Color;
+		strokeColor:Color;
+
 		graphics:any;
 
 		constructor(){
 			super();
 			this.graphics = new Graphics(this);
 		}
+	}
 
-		draw(context):boolean {
-			super.draw(context);
-			this.graphics.draw(context);
+	export class Rectangle extends Shape{
+		constructor(fill:any = Color.WHITE, stroke:any = Color.WHITE, x:number = 0, y:number = 0, width:number = 0, height:number = 0){
+			this.fillColor = fill;
+			this.strokeColor = stroke;
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+		}
+
+		draw():boolean {
+			super.draw();
+
+			if(this.displayObject.alpha == 0 || !this.displayObject.visible){
+				return false;
+			}
+
+			this.dealRTS();
+
+			this.graphics.beginFill(this.fillColor);
+			this.graphics.drawRect(this.x, this.y, this.width, this.height);
+			this.graphics.endFill();
+
+			context.restore();
+
 			return true;
 		}
+	}
+
+	export class Sprite extends DisplayObject{
 
 		onEnterFrame():void{
 			super.onEnterFrame();
@@ -287,6 +372,8 @@ module phantom{
 	}
 
 	export class Graphics{
+		static context:any;
+
 		drawing:boolean = false;
 
 		displayObject:any;
@@ -294,45 +381,24 @@ module phantom{
 		fillMode:boolean = false;
 		lineMode:boolean = false;
 
-		drawQueue:any = [];
-
 		constructor(displayObject:any){
 			this.displayObject = displayObject;
-		}
-
-		pushMethod(methodName:string, ...params):void{
-			this.drawQueue.push({method: methodName, params: params});
 		}
 
 		clear():void{
 			this.drawQueue.splice(0, this.drawQueue.length);
 
-			context.lineWidth = 1;
-			context.lineStyle = "#000000";
-			context.strokeStyle = "#000000";
-			context.lineCap = "";
-			context.lineJoin = "";
-			context.miterLimit = "";
-
 			this.fillMode = false;
 			this.lineMode = false;
 		}
 
-		beginFill(color:number, alpha:number = 1):void{
-			this.pushMethod("beginFill", color, alpha);
-		}
-
-		private _beginFill(context:any, color, alpha){
+		beginFill(color:any):void{
 			this.fillMode = true;
-			context.fillStyle = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
+			context.fillStyle = color.transToWeb();
 		}
 
-		lineStyle(thickness:number = NaN, color:number = 0, alpha:number = 1.0, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
-			this.pushMethod("lineStyle", thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit);
-		}
-
-		private _lineStyle(context:any, thickness:number = NaN, color:number = 0, alpha:number = 1.0, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
-			var style = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
+		lineStyle(thickness:number = NaN, color:any = Color.BLACK, pixelHinting:boolean = false, scaleMode:string = "normal", caps:string = null, joints:string = null, miterLimit:number = 3):void{
+			var style = color.transToWeb();
 
 			context.lineWidth = thickness;
 			context.lineStyle = style;
@@ -345,10 +411,6 @@ module phantom{
 		}
 
 		endFill():void{
-			this.pushMethod("endFill");
-		}
-
-		private _endFill(context:any){
 			this.fillMode = false;
 		}
 
@@ -357,9 +419,6 @@ module phantom{
 
 			this.displayObject.width = Math.max(this.displayObject.width, x + width);
 			this.displayObject.height = Math.max(this.displayObject.height, y + height);
-		}
-
-		private _drawRect(context:any, x:number, y:number, width:number, height:number):void{
 			if(this.fillMode){
 				context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
 			}
@@ -369,32 +428,20 @@ module phantom{
 		}
 
 		lineTo(x:number, y:number):void{
-			this.pushMethod("lineTo", x, y);
 			this.displayObject.width = Math.max(this.displayObject.width, x);
 			this.displayObject.height = Math.max(this.displayObject.height, y);
-		}
 
-		private _lineTo(context:any, x:number, y:number):void{
 			context.lineTo(x, y);
 			context.stroke();
 		}
 
 		moveTo(x:number, y:number):void{
-			this.pushMethod("moveTo", x, y);
-		}
-
-		private _moveTo(context:any, x:number, y:number):void{
 			context.moveTo(x, y);
 		}
 
 		drawCircle(x:number, y:number, r:number):void{
-			this.pushMethod("drawCircle", x, y, r);
-
 			this.displayObject.width = Math.max(this.displayObject.width, x + r);
 			this.displayObject.height = Math.max(this.displayObject.height, y + r);
-		}
-
-		private _drawCircle(context:any, x:number, y:number, r:number):void{
 			context.beginPath();
 			context.arc(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, r, 0, Math.PI * 2, true);
 			context.closePath();
@@ -404,36 +451,6 @@ module phantom{
 			if(this.lineMode){
 				context.stroke();
 			}
-		}
-
-		public _dealRTS(context:any):void{
-			context.translate(this.displayObject.x, this.displayObject.y);
-			context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
-			context.rotate(this.displayObject.rotation);
-		}
-
-		draw(context:any):boolean {
-			if(this.displayObject.alpha == 0 || !this.displayObject.visible){
-				return false;
-			}
-			this.drawing = true;
-
-			context.save();
-			this._dealRTS(context);
-			var drawEntity:any;
-			for(var i:number = 0, len:number = this.drawQueue.length; i < len; i++){
-				drawEntity = this.drawQueue[i];
-
-				var params:any = drawEntity.params;
-				if(params[0] != context){
-					params.unshift(context);
-				}
-				this["_" + drawEntity.method].apply(this, params);
-			}
-			context.restore();
-
-			this.drawing = false;
-			return true;
 		}
 	}
 }

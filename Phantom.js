@@ -48,6 +48,7 @@ var phantom;
             this.canvas = canvas;
             this.root = root;
             this.context = this.canvas.getContext("2d");
+            Graphics.context = this.context;
 
             this.start();
         }
@@ -134,6 +135,50 @@ var phantom;
         return Rect;
     })();
     phantom.Rect = Rect;
+
+    var Color = (function () {
+        function Color(color, alpha) {
+            if (typeof alpha === "undefined") { alpha = 1; }
+            this.color = color;
+            this.alpha = alpha;
+        }
+        Color.prototype.toWeb = function () {
+            var b = this.color % 256;
+            var g = (this.color >> 8) % 256;
+            var r = this.color >> 16;
+            return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, this.alpha);
+        };
+
+        Color.prototype.toHex = function () {
+            return "#" + this.color.toString(16);
+        };
+
+        Color.prototype.fromWeb = function (value) {
+            value = value.substr(value.indexOf("(") + 1, value.lastIndexOf(")"));
+            var arr = value.split(",");
+            var r = parseInt(arr[0]);
+            var g = parseInt(arr[1]);
+            var b = parseInt(arr[2]);
+            var a = parseFloat(arr[3]);
+
+            this.color = r << 16 + g << 8 + b;
+            this.alpha = a;
+        };
+
+        Color.prototype.fromHex = function (value) {
+            var index = value.indexOf("#");
+            if (index >= 0) {
+                value = value.substr(1);
+            }
+
+            this.color = parseInt(value, 16);
+            this.alpha = 0;
+        };
+        Color.BLACK = new Color(0);
+        Color.WHITE = new Color(0xFFFFFF);
+        return Color;
+    })();
+    phantom.Color = Color;
 
     var Event = (function () {
         function Event(type) {
@@ -273,6 +318,40 @@ var phantom;
     })(EventDispatcher);
     phantom.DisplayObject = DisplayObject;
 
+    var Shape = (function (_super) {
+        __extends(Shape, _super);
+        function Shape() {
+            _super.apply(this, arguments);
+        }
+        return Shape;
+    })(DisplayObject);
+    phantom.Shape = Shape;
+
+    var Rectangle = (function (_super) {
+        __extends(Rectangle, _super);
+        function Rectangle(fill, stroke, x, y, width, height) {
+            if (typeof fill === "undefined") { fill = Color.WHITE; }
+            if (typeof stroke === "undefined") { stroke = Color.WHITE; }
+            if (typeof x === "undefined") { x = 0; }
+            if (typeof y === "undefined") { y = 0; }
+            if (typeof width === "undefined") { width = 0; }
+            if (typeof height === "undefined") { height = 0; }
+            this.fillColor = fill;
+            this.strokeColor = stroke;
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+        }
+        Rectangle.prototype.draw = function (context) {
+            _super.prototype.draw.call(this, context);
+            this.graphics.fillColor;
+            return true;
+        };
+        return Rectangle;
+    })(Shape);
+    phantom.Rectangle = Rectangle;
+
     var Sprite = (function (_super) {
         __extends(Sprite, _super);
         function Sprite() {
@@ -308,29 +387,20 @@ var phantom;
             this.drawQueue.push({ method: methodName, params: params });
         };
 
-        Graphics.prototype.beginFill = function (color, alpha) {
-            if (typeof alpha === "undefined") { alpha = 1; }
-            this.pushMethod("beginFill", color, alpha);
+        Graphics.prototype.clear = function () {
+            this.drawQueue.splice(0, this.drawQueue.length);
+
+            this.fillMode = false;
+            this.lineMode = false;
         };
 
-        Graphics.prototype._beginFill = function (context, color, alpha) {
+        Graphics.prototype.beginFill = function (color, alpha) {
+            if (typeof alpha === "undefined") { alpha = 1; }
             this.fillMode = true;
             context.fillStyle = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
         };
 
         Graphics.prototype.lineStyle = function (thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
-            if (typeof thickness === "undefined") { thickness = NaN; }
-            if (typeof color === "undefined") { color = 0; }
-            if (typeof alpha === "undefined") { alpha = 1.0; }
-            if (typeof pixelHinting === "undefined") { pixelHinting = false; }
-            if (typeof scaleMode === "undefined") { scaleMode = "normal"; }
-            if (typeof caps === "undefined") { caps = null; }
-            if (typeof joints === "undefined") { joints = null; }
-            if (typeof miterLimit === "undefined") { miterLimit = 3; }
-            this.pushMethod("lineStyle", thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit);
-        };
-
-        Graphics.prototype._lineStyle = function (context, thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
             if (typeof thickness === "undefined") { thickness = NaN; }
             if (typeof color === "undefined") { color = 0; }
             if (typeof alpha === "undefined") { alpha = 1.0; }
@@ -352,10 +422,6 @@ var phantom;
         };
 
         Graphics.prototype.endFill = function () {
-            this.pushMethod("endFill");
-        };
-
-        Graphics.prototype._endFill = function (context) {
             this.fillMode = false;
         };
 
@@ -364,6 +430,12 @@ var phantom;
 
             this.displayObject.width = Math.max(this.displayObject.width, x + width);
             this.displayObject.height = Math.max(this.displayObject.height, y + height);
+            if (this.fillMode) {
+                context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
+            }
+            if (this.lineMode) {
+                context.strokeRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
+            }
         };
 
         Graphics.prototype._drawRect = function (context, x, y, width, height) {
