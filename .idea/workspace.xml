@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b14924bc-1c69-4b61-9639-a9c6167a800f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.js" afterPath="$PROJECT_DIR$/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.ts" afterPath="$PROJECT_DIR$/Main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.js" afterPath="$PROJECT_DIR$/Phantom.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.ts" afterPath="$PROJECT_DIR$/Phantom.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Canvas2D.iws" />
@@ -75,9 +70,19 @@
       <file leaf-file-name="Phantom.ts" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Phantom.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4657933" vertical-offset="120" max-vertical-offset="9220">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-              <folding />
+            <state vertical-scroll-proportion="-0.65938866" vertical-offset="5393" max-vertical-offset="6080">
+              <caret line="400" column="34" selection-start-line="400" selection-start-column="34" selection-end-line="400" selection-end-column="34" />
+              <folding>
+                <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+                <element signature="n#Point#0;n#phantom#0" expanded="false" />
+                <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+                <element signature="n#Color#0;n#phantom#0" expanded="false" />
+                <element signature="n#Event#0;n#phantom#0" expanded="false" />
+                <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+                <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+                <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+                <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -490,7 +495,7 @@
       <workItem from="1399724043626" duration="6351000" />
       <workItem from="1399780878836" duration="12370000" />
       <workItem from="1399817089167" duration="82000" />
-      <workItem from="1399817191180" duration="4423000" />
+      <workItem from="1399817191180" duration="7614000" />
     </task>
     <task id="LOCAL-00001" summary="haha">
       <created>1399482969056</created>
@@ -512,11 +517,15 @@
       <created>1399705281893</created>
       <updated>1399705281893</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="version-2">
+      <created>1399823077037</created>
+      <updated>1399823077037</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77010000" />
+    <option name="totallyTimeSpent" value="80201000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -536,6 +545,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -545,7 +555,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -598,10 +607,13 @@
     <MESSAGE value="haha" />
     <MESSAGE value="add EventListener.&#10;" />
     <MESSAGE value="添加了事件分发器&#10;添加了鼠标事件类&#10;添加了displayobject的mouseMove事件" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加了事件分发器&#10;添加了鼠标事件类&#10;添加了displayobject的mouseMove事件" />
+    <MESSAGE value="version-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version-2" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -620,7 +632,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7825" max-vertical-offset="10020">
           <caret line="416" column="5" selection-start-line="416" selection-start-column="5" selection-end-line="416" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -652,7 +674,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7825" max-vertical-offset="10020">
           <caret line="416" column="5" selection-start-line="416" selection-start-column="5" selection-end-line="416" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -684,7 +716,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6108" max-vertical-offset="9000">
           <caret line="313" column="51" selection-start-line="313" selection-start-column="51" selection-end-line="313" selection-end-column="51" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -708,7 +750,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8880">
           <caret line="309" column="28" selection-start-line="309" selection-start-column="28" selection-end-line="309" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -732,7 +784,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6215" max-vertical-offset="6880">
           <caret line="406" column="21" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -756,7 +818,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4688">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -780,7 +852,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -804,7 +886,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -828,7 +920,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -852,7 +954,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -876,7 +988,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -900,7 +1022,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -931,7 +1063,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -992,9 +1134,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4657933" vertical-offset="120" max-vertical-offset="9220">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
+        <state vertical-scroll-proportion="-0.65938866" vertical-offset="5393" max-vertical-offset="6080">
+          <caret line="400" column="34" selection-start-line="400" selection-start-column="34" selection-end-line="400" selection-end-column="34" />
+          <folding>
+            <element signature="n#StringUtils#0;n#phantom#0" expanded="false" />
+            <element signature="n#Point#0;n#phantom#0" expanded="false" />
+            <element signature="n#Rect#0;n#phantom#0" expanded="false" />
+            <element signature="n#Color#0;n#phantom#0" expanded="false" />
+            <element signature="n#Event#0;n#phantom#0" expanded="false" />
+            <element signature="n#MouseEvent#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IEventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#EventDispatcher#0;n#phantom#0" expanded="false" />
+            <element signature="n#!!block;n#IDisplayObject#0;n#phantom#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -66,16 +66,7 @@ module phantom{
 		}
 	}
 
-	export class ColorUtils{
-		static transToWeb(color:number, alpha:number = 1):string{
-			var b:number = color % 256;
-			var g:number = (color >> 8) % 256;
-			var r:number = color >> 16;
-			return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
-		}
-	}
-
-	export class stringUtils{
+	export class StringUtils{
 		static format(fmt:string, ...params):string{
 			var result:string = fmt;
 			for(var i:number = 0, len:number = params.length; i < len; i++){
@@ -93,6 +84,10 @@ module phantom{
 		constructor(x:number = 0, y:number = 0){
 			this.x = x;
 			this.y = y;
+		}
+
+		distance(p:any):number{
+			return Math.sqrt((p.x - this.x) * (p.x - this.x) + (p.y - this.y) * (p.y - this.y));
 		}
 	}
 
@@ -158,11 +153,6 @@ module phantom{
 			this.color = parseInt(value, 16);
 			this.alpha = 0;
 		}
-	}
-
-	export interface IDisplayObject{
-		draw(context:any):boolean;
-		onEnterFrame():void;
 	}
 
 	export class Event{
@@ -240,6 +230,11 @@ module phantom{
 				listeners.splice(index, 1);
 			}
 		}
+	}
+
+	export interface IDisplayObject{
+		draw(context:any):boolean;
+		onEnterFrame():void;
 	}
 
 	export class DisplayObject extends EventDispatcher implements IDisplayObject{
@@ -352,6 +347,7 @@ module phantom{
 				return false;
 			}
 
+			context.save();
 			this.dealRTS();
 
 			this.graphics.beginFill(this.fillColor);
