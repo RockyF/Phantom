@@ -11,10 +11,12 @@ class Stage {
 
 	private sign:number;
 
-	constructor(canvas:any) {
+	constructor(canvas:any, root:DisplayObject) {
 		this.canvas = canvas;
 		this.context = this.canvas.getContext('2d');
-
+		root.root = root;
+		root.stage = this;
+		this.root = root;
 		Graphics.context = this.context;
 	}
 
@@ -35,114 +37,7 @@ class Stage {
 	}
 }
 
-interface IDrawable {
-	draw():void;
-}
-
-class DisplayObject extends EventDispatcher implements IDrawable {
-	children:any = [];
-	parent:any;
-	root:any;
-	stage:any;
-
-	constructor(){
-
-	}
-
-	draw():void {
-
-	}
-
-	contains(child:any):boolean {
-		return this.getChildIndex(child) >= 0;
-	}
-
-	getChildIndex(child:any):number {
-		return this.children.indexOf(child);
-	}
-
-	addChild(child:any):any {
-		if (!this.contains(child)) {
-			child.remove();
-			child.parent = this;
-			child.root = this.root;
-			this.children.push(child);
-
-			child.dispatchEvent(new Event(Event.ADDED));
-			if(this.stage){
-				this.broadcastAddedToStage(child);
-			}
-		}
-		return this;
-	}
-
-	broadcastAddedToStage=(child):void=>{
-		child.stage = child.parent.stage;
-		child.dispatchEvent(new Event(Event.ADDED_TO_STAGE));
-		for(var i, len = this.children; i < len; i++){
-			var subChild = this.children[i];
-			child.broadcastAddedToStage(subChild);
-		}
-	};
-
-	remove():boolean {
-		if (this.parent) {
-			this.parent.removeChild(this);
-
-			return true;
-		}
-		return false;
-	}
-
-	removeChild(child:any):any {
-		if (this.contains(child)) {
-			this.children.splice(this.getChildIndex(child), 1);
-			var onStage = child.stage != null;
-
-			child.parent = null;
-
-			child.dispatchEvent(new Event(Event.REMOVED));
-			if(onStage){
-				this.broadcastRemoveFromStage(child);
-			}
-			return true;
-		}
-		return this;
-	}
-
-	broadcastRemoveFromStage=(child):void=>{
-		child.stage = null;
-		child.root = null;
-		child.dispatchEvent(new Event(Event.REMOVED_FROM_STAGE));
-		for(var i, len = this.children; i < len; i++){
-			var subChild = this.children[i];
-			child.broadcastRemoveFromStage(subChild);
-		}
-	};
-
-	addChildAt(child:any, index:number):any {
-		this.removeChild(child);
-		if (index >= 0 || index < this.children.length) {
-			this.children.splice(index, 0, child);
-		}
-		return this;
-	}
-}
-
-class Shape extends DisplayObject implements IDrawable {
-	draw():void {
-	}
-}
-
-class Sprite extends DisplayObject {
-
-}
-
-class Rectantle extends Shape {
-
-}
-
-class Event {
+class PEvent {
 	static ACTIVATE:string = 'activate';
 	static ADDED:string = 'added';
 	static ADDED_TO_STAGE:string = 'addedToStage';
@@ -183,6 +78,16 @@ class Event {
 	}
 }
 
+class PMouseEvent{
+	static MOUSE_MOVE:string = 'mouseMove';
+	static MOUSE_DOWN:string = 'mouseMove';
+	static MOUSE_UP:string = 'mouseUp';
+	static MOUSE_OVER:string = 'mouseOver';
+	static MOUSE_OUT:string = 'mouseOut';
+	static ROLL_OVER:string = 'rollOver';
+	static ROLL_OUT:string = 'rollOut';
+}
+
 class EventDispatcher {
 	listenersMap:any = [];
 
@@ -192,15 +97,14 @@ class EventDispatcher {
 			listeners = this.listenersMap[type] = [];
 		}
 
-		listener.push(listener);
+		listeners.push(listener);
 	}
 
 	dispatchEvent(event:any):void {
 		var listeners = this.listenersMap[event.type];
 		if (listeners) {
-			for (var i, len = listeners.length; i < len; i++) {
-				var listener = listeners[i];
-				listener.call(this, event);
+			for (var i = 0, len = listeners.length; i < len; i++) {
+				listeners[i].call(this, event);
 			}
 		}
 	}
@@ -213,7 +117,7 @@ class EventDispatcher {
 class StringUtils {
 	static format(fmt:string, ...params):string{
 		var result:string = fmt;
-		for(var i:number = 0, len:number = params.length; i < len; i++){
+		for(var i = 0, len:number = params.length; i < len; i++){
 			result = result.replace('{' + i + '}', params[i]);
 		}
 
@@ -270,6 +174,10 @@ class Point {
 		this.x = x;
 		this.y = y;
 	}
+
+	distance(p:any):number{
+		return Math.sqrt((p.x + this.x) * (p.x + this.x) + (p.y + this.y) * (p.y + this.y));
+	}
 }
 
 class Rect {
@@ -292,4 +200,124 @@ class Rect {
 
 class Graphics {
 	static context:any;
+}
+
+interface IDrawable {
+	draw():void;
+}
+
+class DisplayObject extends EventDispatcher implements IDrawable {
+	children:any = [];
+	parent:any;
+	root:any;
+	stage:any;
+
+	constructor(){
+		super();
+	}
+
+	draw():void {
+
+	}
+
+	contains(child:any):boolean {
+		return this.getChildIndex(child) >= 0;
+	}
+
+	getChildIndex(child:any):number {
+		return this.children.indexOf(child);
+	}
+
+	setChildIndex(child:any, index:number):any {
+		if (this.contains(child) && index >= 0 && index < this.children.length) {
+			this.children.splice(this.getChildIndex(child), 1);
+			this.children.splice(index, 0, child);
+		}
+		return this;
+	}
+
+	addChild(child:any):any {
+		if (!this.contains(child)) {
+			child.remove();
+			child.parent = this;
+			child.root = this.root;
+			this.children.push(child);
+
+			child.dispatchEvent(new PEvent(PEvent.ADDED));
+			if(this.stage){
+				this.broadcastAddedToStage(child);
+			}
+		}
+		return this;
+	}
+
+	addChildAt(child:any, index:number):any {
+		this.addChild(child);
+		this.setChildIndex(child, index);
+		return this;
+	}
+
+	getChildAt(index:number):any{
+		if (index >= 0 && index < this.children.length) {
+			return this.children[index];
+		}
+
+		return null;
+	}
+
+	remove():boolean {
+		if (this.parent) {
+			this.parent.removeChild(this);
+
+			return true;
+		}
+		return false;
+	}
+
+	removeChild(child:any):any {
+		if (this.contains(child)) {
+			this.children.splice(this.getChildIndex(child), 1);
+			var onStage = child.stage != null;
+
+			child.parent = null;
+
+			child.dispatchEvent(new PEvent(PEvent.REMOVED));
+			if(onStage){
+				this.broadcastRemovedFromStage(child);
+			}
+			return true;
+		}
+		return this;
+	}
+
+	broadcastAddedToStage=(child):void=>{
+		child.stage = child.parent.stage;
+		child.root = child.parent.root;
+		child.dispatchEvent(new PEvent(PEvent.ADDED_TO_STAGE));
+		for(var i = 0, len = this.children; i < len; i++){
+			child.broadcastAddedToStage(this.children[i]);
+		}
+	};
+
+	broadcastRemovedFromStage=(child):void=>{
+		child.stage = null;
+		child.root = null;
+		child.dispatchEvent(new PEvent(PEvent.REMOVED_FROM_STAGE));
+		for(var i = 0, len = this.children; i < len; i++){
+			child.broadcastRemovedFromStage(this.children[i]);
+		}
+	};
+}
+
+class Shape extends DisplayObject implements IDrawable {
+	draw():void {
+	}
+}
+
+class Sprite extends DisplayObject {
+
+}
+
+class Rectantle extends Shape {
+
 }
