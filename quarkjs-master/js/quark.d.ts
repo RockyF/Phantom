@@ -161,28 +161,28 @@ declare module Q{
 
 	class DisplayObjectContainer extends DisplayObject{
 		constructor(props:any);
-		public addChildAt(child, index):any;
-		public addChild(child):any;
-		public removeChildAt(index):any;
-		public removeChild(child):any;
+		public addChildAt(child:any, index:number):any;
+		public addChild(child:any):any;
+		public removeChildAt(index:number):any;
+		public removeChild(child:any):any;
 		public removeAllChildren():void;
-		public getChildAt(index):any;
-		public getChildIndex(child):number;
-		public setChildIndex(child, index):void;
-		public swapChildren(child1, child2):void;
-		public swapChildrenAt(index1:number, index2):void;
-		public getChildById(id):any;
-		public removeChildById(id):any;
-		public sortChildren(keyOrFunction):any;
-		public contains(child):boolean;
+		public getChildAt(index:number):any;
+		public getChildIndex(child:any):number;
+		public setChildIndex(child:any, index:number):void;
+		public swapChildren(child1:any, child2:any):void;
+		public swapChildrenAt(index1:number, index2:number):void;
+		public getChildById(id:string):any;
+		public removeChildById(id:string):any;
+		public sortChildren(keyOrFunction:any):any;
+		public contains(child:any):boolean;
 		public getNumChildren():number;
-		public render(context):void;
-		public getObjectUnderPoint(x:number, y:number, usePolyCollision, returnAll):any;
+		public render(context:any):void;
+		public getObjectUnderPoint(x:number, y:number, usePolyCollision:boolean, returnAll:boolean):any;
 	}
 
 	class Stage extends DisplayObjectContainer{
 		constructor(props:any);
-		public step(timeInfo):void;
+		public step(timeInfo:any):void;
 		public updatePosition():void;
 		public updatePosition():void;
 
@@ -190,8 +190,8 @@ declare module Q{
 
 	class Bitmap extends DisplayObject{
 		constructor(props:any);
-		public setRect(rect):void;
-		public render(context):void;
+		public setRect(rect:any):void;
+		public render(context:any):void;
 	}
 
 	class MovieClip extends Bitmap{
@@ -201,12 +201,11 @@ declare module Q{
 		public getFrame(indexOrLabel):any;
 		public play():void;
 		public stop():void;
-		public gotoAndStop(indexOrLabel):void;
-		public gotoAndPlay(indexOrLabel):void;
-		public nextFrame(displayedDelta):void;
+		public gotoAndStop(indexOrLabel:number):void;
+		public gotoAndPlay(indexOrLabel:number):void;
+		public nextFrame(displayedDelta:number):void;
 		public getNumFrames():number;
-		public render(context):void;
-		public render(context):void;
+		public render(context:any):void;
 	}
 
 	class Button extends DisplayObjectContainer{

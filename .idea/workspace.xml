@@ -2,123 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b14924bc-1c69-4b61-9639-a9c6167a800f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/squirrel/images/body_walk.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/boy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/btns.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/build/compiler.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/displayobject.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/displayobject_lifecircle.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/dolphin_260.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/dolphin_main_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/dolphin_startup_s.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/fishjoy_260.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/girl.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/img/glyphicons-halflings.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/squirrel/images/head_idle.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/infrastructure.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/logo.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/mask.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/mine_260.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/quark.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/images/runner_260.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/images/turn.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Audio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/Audio.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Bitmap.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Bitmap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Button.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Button.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/CHANGES" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/CanvasContext.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/context/CanvasContext.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Context.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/context/Context.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/DOMContext.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/context/DOMContext.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/DisplayObject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/DisplayObject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/DisplayObjectContainer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/DisplayObjectContainer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Drawable.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Drawable.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/event/EventConst.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/EventDispatcher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/event/EventDispatcher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/EventManager.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/event/EventManager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Graphics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Graphics.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/ImageLoader.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/ImageLoader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/geom/Matrix.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/MovieClip.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/MovieClip.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Quark.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/geom/Rectangle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/squirrel/Squirrel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Stage.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Stage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Text.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/display/Text.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Timer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/Timer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/symbols/Tween.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/Tween.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/UIDUtil.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/utils/Utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/allclasses.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/allfiles.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/src/base/core/base.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/css/bootstrap-responsive.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/css/bootstrap-responsive.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/build/build-base.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/build/build-base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/build/build-doc.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/button.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/class.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/static/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/demo.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/graphics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/static/header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/hittest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/imageloader.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/static/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/index.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/js/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/mask.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/css/prettify.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/js/prettify.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/publish.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/js/quark.base-1.0.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/js/quark.base-1.0.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/js/quark.d.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/squirrel/squirrel.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/api_template/symbol.tmpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/text.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial_context.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial_displayobject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial_event.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial_infrastructure.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/docs/tutorial_squirrel.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/tween1.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quarkjs-master/examples/tween2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.ts" afterPath="$PROJECT_DIR$/Phantom.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test.js" afterPath="$PROJECT_DIR$/Test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test.ts" afterPath="$PROJECT_DIR$/Test.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quarkjs-master/js/quark.d.ts" afterPath="$PROJECT_DIR$/quarkjs-master/js/quark.d.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Canvas2D.iws" />
@@ -199,7 +83,7 @@
           <file leaf-file-name="quark.d.ts" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.d.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="202" column="23" selection-start="6423" selection-end="6423" vertical-scroll-proportion="0.4234234" vertical-offset="2997" max-vertical-offset="4224">
+                <state line="8" column="42" selection-start="350" selection-end="350" vertical-scroll-proportion="0.23063064" vertical-offset="0" max-vertical-offset="4208">
                   <folding />
                 </state>
               </provider>
@@ -698,7 +582,7 @@
       <workItem from="1399946388886" duration="15624000" />
       <workItem from="1400038999018" duration="10338000" />
       <workItem from="1400053517245" duration="621000" />
-      <workItem from="1400054471634" duration="10638000" />
+      <workItem from="1400054471634" duration="10851000" />
     </task>
     <task id="LOCAL-00001" summary="haha">
       <created>1399482969056</created>
@@ -732,11 +616,15 @@
       <created>1399987987289</created>
       <updated>1399987987289</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="version-2&#10;">
+      <created>1400065224734</created>
+      <updated>1400065224734</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92611000" />
+    <option name="totallyTimeSpent" value="92824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -755,6 +643,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -765,7 +654,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.71691793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -1026,7 +914,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="23" selection-start="6423" selection-end="6423" vertical-scroll-proportion="0.4234234" vertical-offset="2997" max-vertical-offset="4224">
+        <state line="8" column="42" selection-start="350" selection-end="350" vertical-scroll-proportion="0.23063064" vertical-offset="0" max-vertical-offset="4208">
           <folding />
         </state>
       </provider>
