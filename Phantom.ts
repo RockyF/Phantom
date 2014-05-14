@@ -217,7 +217,7 @@ class DisplayObject extends EventDispatcher implements IDrawable {
 	}
 
 	draw():void {
-
+		
 	}
 
 	contains(child:any):boolean {

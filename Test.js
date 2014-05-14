@@ -5,15 +5,19 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var DisplayTest = (function (_super) {
-    __extends(DisplayTest, _super);
-    function DisplayTest() {
-        _super.call(this);
+var tbs;
+(function (tbs) {
+    var DisplayTest = (function (_super) {
+        __extends(DisplayTest, _super);
+        function DisplayTest() {
+            _super.call(this);
 
-        this.addChild(new Box());
-    }
-    return DisplayTest;
-})(Sprite);
+            this.addChild(new Box());
+        }
+        return DisplayTest;
+    })(Sprite);
+    tbs.DisplayTest = DisplayTest;
+})(tbs || (tbs = {}));
 
 var Box = (function (_super) {
     __extends(Box, _super);
@@ -34,5 +38,5 @@ var Box = (function (_super) {
 
 window.onload = function () {
     var canvas = document.getElementById('canvasStage');
-    var stage = new Stage(canvas, new DisplayObject());
+    var stage = new Stage(canvas, new tbs.DisplayTest());
 };

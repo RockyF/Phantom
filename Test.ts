@@ -1,11 +1,13 @@
 
 /// <reference path="Phantom.ts" />
 
-class DisplayTest extends Sprite{
-	constructor(){
-		super();
+module tbs{
+	export class DisplayTest extends Sprite{
+		constructor(){
+			super();
 
-		this.addChild(new Box());
+			this.addChild(new Box());
+		}
 	}
 }
 
@@ -27,6 +29,6 @@ class Box extends Sprite{
 
 window.onload = function(){
 	var canvas = document.getElementById('canvasStage');
-	var stage = new Stage(canvas, new DisplayObject());
+	var stage = new Stage(canvas, new tbs.DisplayTest());
 
 };
