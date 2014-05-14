@@ -29,7 +29,7 @@ function init()
 {
 	container = Q.getDOM("container");
 	events = Q.supportTouch ? ["touchstart","touchmove","touchend"] : ["mousedown","mousemove","mouseup", "mouseout"];
-	
+
 	params = Q.getUrlParams();
 	if(params.mode == undefined) params.mode = 2;
 

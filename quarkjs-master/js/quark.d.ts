@@ -1,28 +1,32 @@
 declare module Q{
-	class Quark{
-		static inherit(childClass:any, parentClass:any): void;
-		static merge(obj:any, props:any, strict:boolean = false): any;
-		static delegate(func:any, self:any): any;
-		static getDOM(id:string): any;
-		static createDOM(type:string, props:any):any;
-		static use(name:string):any;
-		static getElementOffset(elem:any):any;
-		static createDOMDrawable(disObj:any, imageObj:any):any;
-		static DEG_TO_RAD:number;
-		static RAD_TO_DEG:number;
-		static hitTestPoint(obj:any, x:number, y:number, usePolyCollision:boolean = false):number;
-		static hitTestObject(obj1:any, obj2:any, usePolyCollision:boolean = false):boolean;
-		static polygonCollision(poly1:any, poly2:any):boolean;
-		static doSATCheck(poly1:any, poly2:any, result:any):any;
-		static toString():string;
-		static trace(...args):void;
-		static getUrlParams():any;
-		static addMeta(props:any):void;
-		static toggleDebugRect(stage:any):void;
-		static cacheObject(obj:any, toImage:any, type:string):void;
-	}
+	function inherit(childClass:any, parentClass:any): void;
+	function merge(obj:any, props:any, strict:boolean = false): any;
+	function delegate(func:any, self:any): any;
+	function getDOM(id:string): any;
+	function createDOM(type:string, props:any):any;
+	function use(name:string):any;
+	function getElementOffset(elem:any):any;
+	function createDOMDrawable(disObj:any, imageObj:any):any;
+	function hitTestPoint(obj:any, x:number, y:number, usePolyCollision:boolean = false):number;
+	function hitTestObject(obj1:any, obj2:any, usePolyCollision:boolean = false):boolean;
+	function polygonCollision(poly1:any, poly2:any):boolean;
+	function doSATCheck(poly1:any, poly2:any, result:any):any;
+	function toString():string;
+	function trace(...args):void;
+	function getUrlParams():any;
+	function addMeta(props:any):void;
+	function toggleDebugRect(stage:any):void;
+	function cacheObject(obj:any, toImage:any, type:string):void;
 
 	class Matrix{
+		public a:number;
+		public b:number;
+		public c:number;
+		public d:number;
+		public e:number;
+		public tx:number;
+		public ty:number;
+
 		constructor(a:number, b:number, c:number, d:number, tx:number, ty:number);
 		public concat: (mtx) =>any;
 		public rotate: (angle) =>any;
@@ -36,6 +40,11 @@ declare module Q{
 	}
 
 	class Rectangle{
+		public x:number;
+		public y:number;
+		public width:number;
+		public height:number;
+
 		constructor(x:number, y:number, width:number, height:number);
 		public intersects: (rect:any) =>boolean;
 		public intersection: (rect:any) =>any;
@@ -43,6 +52,104 @@ declare module Q{
 		public containsPoint: (x:number, y:number) =>boolean;
 		public clone: () =>any;
 		public toString: () =>string;
+	}
+
+	enum KEY{
+		MOUSE_LEFT : 1,
+		MOUSE_MID : 2,
+		MOUSE_RIGHT : 3,
+
+		BACKSPACE : 8,
+		TAB : 9,
+		NUM_CENTER : 12,
+		ENTER : 13,
+		RETURN : 13,
+		SHIFT : 16,
+		CTRL : 17,
+		ALT : 18,
+		PAUSE : 19,
+		CAPS_LOCK : 20,
+		ESC : 27,
+		ESCAPE : 27,
+		SPACE : 32,
+		PAGE_UP : 33,
+		PAGE_DOWN : 34,
+		END : 35,
+		HOME : 36,
+		LEFT : 37,
+		UP : 38,
+		RIGHT : 39,
+		DOWN : 40,
+		PRINT_SCREEN : 44,
+		INSERT : 45,
+		DELETE : 46,
+
+		ZERO : 48,
+		ONE : 49,
+		TWO : 50,
+		THREE : 51,
+		FOUR : 52,
+		FIVE : 53,
+		SIX : 54,
+		SEVEN : 55,
+		EIGHT : 56,
+		NINE : 57,
+
+		A : 65,
+		B : 66,
+		C : 67,
+		D : 68,
+		E : 69,
+		F : 70,
+		G : 71,
+		H : 72,
+		I : 73,
+		J : 74,
+		K : 75,
+		L : 76,
+		M : 77,
+		N : 78,
+		O : 79,
+		P : 80,
+		Q : 81,
+		R : 82,
+		S : 83,
+		T : 84,
+		U : 85,
+		V : 86,
+		W : 87,
+		X : 88,
+		Y : 89,
+		Z : 90,
+
+		CONTEXT_MENU : 93,
+		NUM_ZERO : 96,
+		NUM_ONE : 97,
+		NUM_TWO : 98,
+		NUM_THREE : 99,
+		NUM_FOUR : 100,
+		NUM_FIVE : 101,
+		NUM_SIX : 102,
+		NUM_SEVEN : 103,
+		NUM_EIGHT : 104,
+		NUM_NINE : 105,
+		NUM_MULTIPLY : 106,
+		NUM_PLUS : 107,
+		NUM_MINUS : 109,
+		NUM_PERIOD : 110,
+		NUM_DIVISION : 111,
+		F1 : 112,
+		F2 : 113,
+		F3 : 114,
+		F4 : 115,
+		F5 : 116,
+		F6 : 117,
+		F7 : 118,
+		F8 : 119,
+		F9 : 120,
+		F10 : 121,
+		F11 : 122,
+		F12 : 123
 	}
 
 	class EventManager{
