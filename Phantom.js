@@ -1,5 +1,5 @@
 /**
-* Created by lenovo on 14-5-7.
+* Created by RockyF on 14-5-12.
 */
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -7,514 +7,335 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-function trace() {
-    var params = [];
-    for (var _i = 0; _i < (arguments.length - 0); _i++) {
-        params[_i] = arguments[_i + 0];
+var Stage = (function () {
+    function Stage(canvas, root) {
+        var _this = this;
+        this.onTimer = function () {
+            _this.root.draw();
+        };
+        this.canvas = canvas;
+        this.context = this.canvas.getContext('2d');
+        root.root = root;
+        root.stage = this;
+        this.root = root;
+        Graphics.context = this.context;
     }
-    console.log(params.join(" "));
-}
+    Stage.prototype.start = function () {
+        this.stop();
 
-var phantom;
-(function (phantom) {
-    var Phantom = (function () {
-        function Phantom() {
+        setInterval(this.onTimer, 1000 / this.frameRate);
+    };
+
+    Stage.prototype.stop = function () {
+        if (this.sign > 0) {
+            clearInterval(this.sign);
         }
-        return Phantom;
-    })();
-    phantom.Phantom = Phantom;
+    };
+    return Stage;
+})();
 
-    var Stage = (function () {
-        function Stage(canvas, root) {
-            var _this = this;
-            this.frameRate = 30;
-            this.backgroundColor = 0x888888;
-            this.onMouseDown = function (event) {
-                //console.log("onMouseDown");
-            };
-            this.onMouseUp = function (event) {
-                //console.log("onMouseUp");
-            };
-            this.onMouseMove = function (event) {
-                //console.log(event.offsetX, event.offsetY);
-                _this.root.dealMouseMove(event.offsetX, event.offsetY);
-            };
-            this.onRender = function () {
-                _this.context.fillStyle = ColorUtils.transToWeb(_this.backgroundColor);
-                _this.context.fillRect(0, 0, _this.canvas.width, _this.canvas.height);
-                _this.root.draw(_this.context);
-                _this.root.onEnterFrame();
-            };
-            this.canvas = canvas;
-            this.root = root;
-            this.context = this.canvas.getContext("2d");
-            Graphics.context = this.context;
+var PEvent = (function () {
+    function PEvent(type) {
+        this.type = type;
+    }
+    PEvent.ACTIVATE = 'activate';
+    PEvent.ADDED = 'added';
+    PEvent.ADDED_TO_STAGE = 'addedToStage';
+    PEvent.CANCEL = 'cancel';
+    PEvent.CHANGE = 'change';
+    PEvent.CLEAR = 'clear';
+    PEvent.COMPLETE = 'complete';
+    PEvent.CONNECT = 'connect';
+    PEvent.COPY = 'copy';
+    PEvent.CUT = 'cut';
+    PEvent.DEACTIVATE = 'deactivate';
+    PEvent.DISPLAYING = 'displaying';
+    PEvent.ENTER_FRAME = 'enterFrame';
+    PEvent.EXIT_FRAME = 'exitFrame';
+    PEvent.FRAME_CONSTRUCTED = 'frameConstructed';
+    PEvent.FULLSCREEN = 'fullScreen';
+    PEvent.INIT = 'init';
+    PEvent.MOUSE_LEAVE = 'mouseLeave';
+    PEvent.OPEN = 'open';
+    PEvent.PASTE = 'pause';
+    PEvent.REMOVED = 'remove';
+    PEvent.REMOVED_FROM_STAGE = 'removedFromStage';
+    PEvent.RENDER = 'render';
+    PEvent.RESIZE = 'resize';
+    PEvent.SCROLL = 'scroll';
+    PEvent.SELECT = 'select';
+    PEvent.SELECT_ALL = 'selectAll';
+    PEvent.SOUND_COMPLETE = 'soundComplete';
+    PEvent.TAB_CHILDREN_CHANGE = 'tabChildrenChange';
+    PEvent.TAB_ENABLED_CHANGE = 'tabEnabledChange';
+    PEvent.TAB_INDEX_CHANGE = 'tabIndexChange';
+    PEvent.UNLOAD = 'unload';
+    return PEvent;
+})();
 
-            this.start();
+var PMouseEvent = (function () {
+    function PMouseEvent() {
+    }
+    PMouseEvent.MOUSE_MOVE = 'mouseMove';
+    PMouseEvent.MOUSE_DOWN = 'mouseMove';
+    PMouseEvent.MOUSE_UP = 'mouseUp';
+    PMouseEvent.MOUSE_OVER = 'mouseOver';
+    PMouseEvent.MOUSE_OUT = 'mouseOut';
+    PMouseEvent.ROLL_OVER = 'rollOver';
+    PMouseEvent.ROLL_OUT = 'rollOut';
+    return PMouseEvent;
+})();
+
+var EventDispatcher = (function () {
+    function EventDispatcher() {
+        this.listenersMap = [];
+    }
+    EventDispatcher.prototype.addEventListener = function (type, listener) {
+        var listeners = this.listenersMap[type];
+        if (!listeners) {
+            listeners = this.listenersMap[type] = [];
         }
-        Stage.prototype.start = function () {
-            this.signRender = setInterval(this.onRender, 1000 / this.frameRate);
-            this.canvas.addEventListener("mousedown", this.onMouseDown);
-            this.canvas.addEventListener("mouseup", this.onMouseUp);
-            this.canvas.addEventListener("mousemove", this.onMouseMove);
-        };
 
-        Stage.prototype.stop = function () {
-            if (this.signRender > 0) {
-                clearInterval(this.signRender);
+        listeners.push(listener);
+    };
+
+    EventDispatcher.prototype.dispatchEvent = function (event) {
+        var listeners = this.listenersMap[event.type];
+        if (listeners) {
+            for (var i = 0, len = listeners.length; i < len; i++) {
+                listeners[i].call(this, event);
+            }
+        }
+    };
+
+    EventDispatcher.prototype.hasEventListener = function (type) {
+        return this.listenersMap[type];
+    };
+    return EventDispatcher;
+})();
+
+var StringUtils = (function () {
+    function StringUtils() {
+    }
+    StringUtils.format = function (fmt) {
+        var params = [];
+        for (var _i = 0; _i < (arguments.length - 1); _i++) {
+            params[_i] = arguments[_i + 1];
+        }
+        var result = fmt;
+        for (var i = 0, len = params.length; i < len; i++) {
+            result = result.replace('{' + i + '}', params[i]);
+        }
+
+        return result;
+    };
+    return StringUtils;
+})();
+
+var Color = (function () {
+    function Color(color, alpha) {
+        if (typeof color === "undefined") { color = 0; }
+        if (typeof alpha === "undefined") { alpha = 1; }
+        this.color = 0;
+        this.alpha = 1;
+        this.color = color;
+        this.alpha = alpha;
+    }
+    Color.prototype.toWeb = function () {
+        var b = this.color % 256;
+        var g = (this.color >> 8) % 256;
+        var r = this.color >> 16;
+        return StringUtils.format('rgba({0}, {1}, {2}, {3})', r, g, b, this.alpha);
+    };
+
+    Color.prototype.toHex = function () {
+        return '#' + this.color.toString(16);
+    };
+
+    Color.prototype.fromWeb = function (value) {
+        value = value.substring(value.indexOf('(') + 1, value.lastIndexOf(')'));
+        var arr = value.split(',');
+
+        var r = parseInt(arr[0]);
+        var g = parseInt(arr[1]);
+        var b = parseInt(arr[2]);
+        this.color = r << 16 + g << 8 + b;
+        if (arr.length == 4) {
+            this.alpha = parseFloat(arr[3]);
+        }
+    };
+
+    Color.prototype.fromHex = function (value) {
+        if (value.indexOf('#')) {
+            value = value.substr(0);
+        }
+        this.color = parseInt(value, 16);
+    };
+    return Color;
+})();
+
+var Point = (function () {
+    function Point(x, y) {
+        if (typeof x === "undefined") { x = 0; }
+        if (typeof y === "undefined") { y = 0; }
+        this.x = 0;
+        this.y = 0;
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.distance = function (p) {
+        return Math.sqrt((p.x + this.x) * (p.x + this.x) + (p.y + this.y) * (p.y + this.y));
+    };
+    return Point;
+})();
+
+var Rect = (function () {
+    function Rect(x, y, width, height) {
+        if (typeof x === "undefined") { x = 0; }
+        if (typeof y === "undefined") { y = 0; }
+        if (typeof width === "undefined") { width = 0; }
+        if (typeof height === "undefined") { height = 0; }
+        this.x = 0;
+        this.y = 0;
+        this.width = 0;
+        this.height = 0;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    Rect.prototype.containsPoint = function (point) {
+        return point.x > this.x && point.y > this.y && point.x < this.x + this.width && point.y < this.y + this.height;
+    };
+    return Rect;
+})();
+
+var Graphics = (function () {
+    function Graphics() {
+    }
+    return Graphics;
+})();
+
+var DisplayObject = (function (_super) {
+    __extends(DisplayObject, _super);
+    function DisplayObject() {
+        var _this = this;
+        _super.call(this);
+        this.children = [];
+        this.broadcastAddedToStage = function (child) {
+            child.stage = child.parent.stage;
+            child.root = child.parent.root;
+            child.dispatchEvent(new PEvent(PEvent.ADDED_TO_STAGE));
+            for (var i = 0, len = _this.children; i < len; i++) {
+                child.broadcastAddedToStage(_this.children[i]);
             }
         };
-        return Stage;
-    })();
-    phantom.Stage = Stage;
-
-    var ColorUtils = (function () {
-        function ColorUtils() {
-        }
-        ColorUtils.transToWeb = function (color, alpha) {
-            if (typeof alpha === "undefined") { alpha = 1; }
-            var b = color % 256;
-            var g = (color >> 8) % 256;
-            var r = color >> 16;
-            return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, alpha);
-        };
-        return ColorUtils;
-    })();
-    phantom.ColorUtils = ColorUtils;
-
-    var stringUtils = (function () {
-        function stringUtils() {
-        }
-        stringUtils.format = function (fmt) {
-            var params = [];
-            for (var _i = 0; _i < (arguments.length - 1); _i++) {
-                params[_i] = arguments[_i + 1];
-            }
-            var result = fmt;
-            for (var i = 0, len = params.length; i < len; i++) {
-                result = result.replace("{" + i + "}", params[i]);
-            }
-
-            return result;
-        };
-        return stringUtils;
-    })();
-    phantom.stringUtils = stringUtils;
-
-    var Point = (function () {
-        function Point(x, y) {
-            if (typeof x === "undefined") { x = 0; }
-            if (typeof y === "undefined") { y = 0; }
-            this.x = 0;
-            this.y = 0;
-            this.x = x;
-            this.y = y;
-        }
-        return Point;
-    })();
-    phantom.Point = Point;
-
-    var Rect = (function () {
-        function Rect(x, y, width, height) {
-            if (typeof x === "undefined") { x = 0; }
-            if (typeof y === "undefined") { y = 0; }
-            if (typeof width === "undefined") { width = 0; }
-            if (typeof height === "undefined") { height = 0; }
-            this.x = 0;
-            this.y = 0;
-            this.width = 0;
-            this.height = 0;
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
-        Rect.prototype.containsPoint = function (point) {
-            return point.x > this.x && point.y > this.y && point.x < this.x + this.width && point.y < this.y + this.height;
-        };
-        return Rect;
-    })();
-    phantom.Rect = Rect;
-
-    var Color = (function () {
-        function Color(color, alpha) {
-            if (typeof alpha === "undefined") { alpha = 1; }
-            this.color = color;
-            this.alpha = alpha;
-        }
-        Color.prototype.toWeb = function () {
-            var b = this.color % 256;
-            var g = (this.color >> 8) % 256;
-            var r = this.color >> 16;
-            return stringUtils.format("rgba({0}, {1}, {2}, {3})", r, g, b, this.alpha);
-        };
-
-        Color.prototype.toHex = function () {
-            return "#" + this.color.toString(16);
-        };
-
-        Color.prototype.fromWeb = function (value) {
-            value = value.substr(value.indexOf("(") + 1, value.lastIndexOf(")"));
-            var arr = value.split(",");
-            var r = parseInt(arr[0]);
-            var g = parseInt(arr[1]);
-            var b = parseInt(arr[2]);
-            var a = parseFloat(arr[3]);
-
-            this.color = r << 16 + g << 8 + b;
-            this.alpha = a;
-        };
-
-        Color.prototype.fromHex = function (value) {
-            var index = value.indexOf("#");
-            if (index >= 0) {
-                value = value.substr(1);
-            }
-
-            this.color = parseInt(value, 16);
-            this.alpha = 0;
-        };
-        Color.BLACK = new Color(0);
-        Color.WHITE = new Color(0xFFFFFF);
-        return Color;
-    })();
-    phantom.Color = Color;
-
-    var Event = (function () {
-        function Event(type) {
-            this.type = type;
-        }
-        return Event;
-    })();
-    phantom.Event = Event;
-
-    var MouseEvent = (function (_super) {
-        __extends(MouseEvent, _super);
-        function MouseEvent() {
-            _super.apply(this, arguments);
-        }
-        MouseEvent.CLICK = "click";
-        MouseEvent.BOUBLE_CLICK = "doubleClick";
-        MouseEvent.MOUSE_DOWN = "mouseDown";
-        MouseEvent.MOUSE_MOVE = "mouseMove";
-        MouseEvent.MOUSE_UP = "mouseUp";
-        MouseEvent.MOUSE_OUT = "mouseOut";
-        MouseEvent.MOUSE_OVER = "mouseOver";
-        MouseEvent.MOUSE_WHLEEL = "mouseWheel";
-        MouseEvent.ROLE_OUT = "rollOut";
-        MouseEvent.ROLE_OVER = "rollOver";
-        return MouseEvent;
-    })(Event);
-    phantom.MouseEvent = MouseEvent;
-
-    var EventDispatcher = (function () {
-        function EventDispatcher(target) {
-            if (typeof target === "undefined") { target = null; }
-            this.listenersMap = [];
-            this.target = target;
-        }
-        EventDispatcher.prototype.addEventListener = function (type, listener) {
-            var listeners = this.listenersMap[type];
-            if (!listeners) {
-                listeners = this.listenersMap[type] = [];
-            }
-            listeners.push(listener);
-        };
-
-        EventDispatcher.prototype.dispatchEvent = function (event) {
-            var listeners = this.listenersMap[event.type];
-            if (listeners) {
-                for (var key in listeners) {
-                    var listener = listeners[key];
-                    listener.call(this, event);
-                }
+        this.broadcastRemovedFromStage = function (child) {
+            child.stage = null;
+            child.root = null;
+            child.dispatchEvent(new PEvent(PEvent.REMOVED_FROM_STAGE));
+            for (var i = 0, len = _this.children; i < len; i++) {
+                child.broadcastRemovedFromStage(_this.children[i]);
             }
         };
+    }
+    DisplayObject.prototype.draw = function () {
+    };
 
-        EventDispatcher.prototype.hasEventListener = function (type) {
-            return this.listenersMap[type];
-        };
+    DisplayObject.prototype.contains = function (child) {
+        return this.getChildIndex(child) >= 0;
+    };
 
-        EventDispatcher.prototype.removeEventListener = function (type, listener) {
-            var listeners = this.listenersMap[type];
-            if (listeners) {
-                var index = listeners.indexOf(listener);
-                listeners.splice(index, 1);
-            }
-        };
-        return EventDispatcher;
-    })();
-    phantom.EventDispatcher = EventDispatcher;
+    DisplayObject.prototype.getChildIndex = function (child) {
+        return this.children.indexOf(child);
+    };
 
-    var DisplayObject = (function (_super) {
-        __extends(DisplayObject, _super);
-        function DisplayObject() {
-            _super.apply(this, arguments);
-            this.x = 0;
-            this.y = 0;
-            this.width = 0;
-            this.height = 0;
-            this.alpha = 1;
-            this.rotation = 0;
-            this.visible = true;
-            this.scaleX = 1;
-            this.scaleY = 1;
-            this.anchorPoint = new Point();
-            this.drawBound = new Rect();
-            this.mouseEnable = true;
-            this.mouseChildren = true;
-            this.children = [];
+    DisplayObject.prototype.setChildIndex = function (child, index) {
+        if (this.contains(child) && index >= 0 && index < this.children.length) {
+            this.children.splice(this.getChildIndex(child), 1);
+            this.children.splice(index, 0, child);
         }
-        DisplayObject.prototype.draw = function (context) {
-            var child;
-            for (var key in this.children) {
-                child = this.children[key];
-                child.draw(context);
-                child.onEnterFrame();
-            }
-            return true;
-        };
+        return this;
+    };
 
-        DisplayObject.prototype.dealMouseMove = function (mouseX, mouseY) {
-            this.mouseX = mouseX;
-            this.mouseY = mouseY;
-
-            var attacked = this.hitTest(this.mouseX, this.mouseY);
-
-            //trace(attacked);
-            if (attacked) {
-                if (this.mouseEnable) {
-                    var event = new MouseEvent(MouseEvent.MOUSE_MOVE);
-                    event.localX = this.mouseX - this.x;
-                    event.localY = this.mouseY - this.y;
-                    this.dispatchEvent(event);
-                }
-
-                if (this.mouseChildren) {
-                    var child;
-                    for (var key in this.children) {
-                        child = this.children[key];
-                        child.dealMouseMove(this.mouseX, this.mouseY);
-                    }
-                }
-            }
-        };
-
-        DisplayObject.prototype.onEnterFrame = function () {
-        };
-
-        DisplayObject.prototype.addChild = function (child) {
+    DisplayObject.prototype.addChild = function (child) {
+        if (!this.contains(child)) {
+            child.remove();
+            child.parent = this;
+            child.root = this.root;
             this.children.push(child);
-        };
 
-        DisplayObject.prototype.getRect = function () {
-            return new Rect(this.x, this.y, this.width, this.height);
-        };
-
-        DisplayObject.prototype.hitTest = function (x, y) {
-            return x > this.x && y > this.y && x < this.x + this.width && y < this.y + this.height;
-        };
-        return DisplayObject;
-    })(EventDispatcher);
-    phantom.DisplayObject = DisplayObject;
-
-    var Shape = (function (_super) {
-        __extends(Shape, _super);
-        function Shape() {
-            _super.apply(this, arguments);
+            child.dispatchEvent(new PEvent(PEvent.ADDED));
+            if (this.stage) {
+                this.broadcastAddedToStage(child);
+            }
         }
-        return Shape;
-    })(DisplayObject);
-    phantom.Shape = Shape;
+        return this;
+    };
 
-    var Rectangle = (function (_super) {
-        __extends(Rectangle, _super);
-        function Rectangle(fill, stroke, x, y, width, height) {
-            if (typeof fill === "undefined") { fill = Color.WHITE; }
-            if (typeof stroke === "undefined") { stroke = Color.WHITE; }
-            if (typeof x === "undefined") { x = 0; }
-            if (typeof y === "undefined") { y = 0; }
-            if (typeof width === "undefined") { width = 0; }
-            if (typeof height === "undefined") { height = 0; }
-            this.fillColor = fill;
-            this.strokeColor = stroke;
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
+    DisplayObject.prototype.addChildAt = function (child, index) {
+        this.addChild(child);
+        this.setChildIndex(child, index);
+        return this;
+    };
+
+    DisplayObject.prototype.getChildAt = function (index) {
+        if (index >= 0 && index < this.children.length) {
+            return this.children[index];
         }
-        Rectangle.prototype.draw = function (context) {
-            _super.prototype.draw.call(this, context);
-            this.graphics.fillColor;
+
+        return null;
+    };
+
+    DisplayObject.prototype.remove = function () {
+        if (this.parent) {
+            this.parent.removeChild(this);
+
             return true;
-        };
-        return Rectangle;
-    })(Shape);
-    phantom.Rectangle = Rectangle;
-
-    var Sprite = (function (_super) {
-        __extends(Sprite, _super);
-        function Sprite() {
-            _super.call(this);
-            this.graphics = new Graphics(this);
         }
-        Sprite.prototype.draw = function (context) {
-            _super.prototype.draw.call(this, context);
-            this.graphics.draw(context);
+        return false;
+    };
+
+    DisplayObject.prototype.removeChild = function (child) {
+        if (this.contains(child)) {
+            this.children.splice(this.getChildIndex(child), 1);
+            var onStage = child.stage != null;
+
+            child.parent = null;
+
+            child.dispatchEvent(new PEvent(PEvent.REMOVED));
+            if (onStage) {
+                this.broadcastRemovedFromStage(child);
+            }
             return true;
-        };
-
-        Sprite.prototype.onEnterFrame = function () {
-            _super.prototype.onEnterFrame.call(this);
-        };
-        return Sprite;
-    })(DisplayObject);
-    phantom.Sprite = Sprite;
-
-    var Graphics = (function () {
-        function Graphics(displayObject) {
-            this.drawing = false;
-            this.fillMode = false;
-            this.lineMode = false;
-            this.drawQueue = [];
-            this.displayObject = displayObject;
         }
-        Graphics.prototype.pushMethod = function (methodName) {
-            var params = [];
-            for (var _i = 0; _i < (arguments.length - 1); _i++) {
-                params[_i] = arguments[_i + 1];
-            }
-            this.drawQueue.push({ method: methodName, params: params });
-        };
+        return this;
+    };
+    return DisplayObject;
+})(EventDispatcher);
 
-        Graphics.prototype.clear = function () {
-            this.drawQueue.splice(0, this.drawQueue.length);
+var Shape = (function (_super) {
+    __extends(Shape, _super);
+    function Shape() {
+        _super.apply(this, arguments);
+    }
+    Shape.prototype.draw = function () {
+    };
+    return Shape;
+})(DisplayObject);
 
-            this.fillMode = false;
-            this.lineMode = false;
-        };
+var Sprite = (function (_super) {
+    __extends(Sprite, _super);
+    function Sprite() {
+        _super.apply(this, arguments);
+    }
+    return Sprite;
+})(DisplayObject);
 
-        Graphics.prototype.beginFill = function (color, alpha) {
-            if (typeof alpha === "undefined") { alpha = 1; }
-            this.fillMode = true;
-            context.fillStyle = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
-        };
-
-        Graphics.prototype.lineStyle = function (thickness, color, alpha, pixelHinting, scaleMode, caps, joints, miterLimit) {
-            if (typeof thickness === "undefined") { thickness = NaN; }
-            if (typeof color === "undefined") { color = 0; }
-            if (typeof alpha === "undefined") { alpha = 1.0; }
-            if (typeof pixelHinting === "undefined") { pixelHinting = false; }
-            if (typeof scaleMode === "undefined") { scaleMode = "normal"; }
-            if (typeof caps === "undefined") { caps = null; }
-            if (typeof joints === "undefined") { joints = null; }
-            if (typeof miterLimit === "undefined") { miterLimit = 3; }
-            var style = ColorUtils.transToWeb(color, alpha * this.displayObject.alpha);
-
-            context.lineWidth = thickness;
-            context.lineStyle = style;
-            context.strokeStyle = style;
-            context.lineCap = caps;
-            context.lineJoin = joints;
-            context.miterLimit = miterLimit;
-
-            this.lineMode = thickness > 0;
-        };
-
-        Graphics.prototype.endFill = function () {
-            this.fillMode = false;
-        };
-
-        Graphics.prototype.drawRect = function (x, y, width, height) {
-            this.pushMethod("drawRect", x, y, width, height);
-
-            this.displayObject.width = Math.max(this.displayObject.width, x + width);
-            this.displayObject.height = Math.max(this.displayObject.height, y + height);
-            if (this.fillMode) {
-                context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-            }
-            if (this.lineMode) {
-                context.strokeRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-            }
-        };
-
-        Graphics.prototype._drawRect = function (context, x, y, width, height) {
-            if (this.fillMode) {
-                context.fillRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-            }
-            if (this.lineMode) {
-                context.strokeRect(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, width, height);
-            }
-        };
-
-        Graphics.prototype.lineTo = function (x, y) {
-            this.pushMethod("lineTo", x, y);
-            this.displayObject.width = Math.max(this.displayObject.width, x);
-            this.displayObject.height = Math.max(this.displayObject.height, y);
-        };
-
-        Graphics.prototype._lineTo = function (context, x, y) {
-            context.lineTo(x, y);
-            context.stroke();
-        };
-
-        Graphics.prototype.moveTo = function (x, y) {
-            this.pushMethod("moveTo", x, y);
-        };
-
-        Graphics.prototype._moveTo = function (context, x, y) {
-            context.moveTo(x, y);
-        };
-
-        Graphics.prototype.drawCircle = function (x, y, r) {
-            this.pushMethod("drawCircle", x, y, r);
-
-            this.displayObject.width = Math.max(this.displayObject.width, x + r);
-            this.displayObject.height = Math.max(this.displayObject.height, y + r);
-        };
-
-        Graphics.prototype._drawCircle = function (context, x, y, r) {
-            context.beginPath();
-            context.arc(x - this.displayObject.anchorPoint.x, y - this.displayObject.anchorPoint.y, r, 0, Math.PI * 2, true);
-            context.closePath();
-            if (this.fillMode) {
-                context.fill();
-            }
-            if (this.lineMode) {
-                context.stroke();
-            }
-        };
-
-        Graphics.prototype._dealRTS = function (context) {
-            context.translate(this.displayObject.x, this.displayObject.y);
-            context.scale(this.displayObject.scaleX, this.displayObject.scaleY);
-            context.rotate(this.displayObject.rotation);
-        };
-
-        Graphics.prototype.draw = function (context) {
-            if (this.displayObject.alpha == 0 || !this.displayObject.visible) {
-                return false;
-            }
-            this.drawing = true;
-
-            context.save();
-            this._dealRTS(context);
-            var drawEntity;
-            for (var i = 0, len = this.drawQueue.length; i < len; i++) {
-                drawEntity = this.drawQueue[i];
-
-                var params = drawEntity.params;
-                if (params[0] != context) {
-                    params.unshift(context);
-                }
-                this["_" + drawEntity.method].apply(this, params);
-            }
-            context.restore();
-
-            this.drawing = false;
-            return true;
-        };
-        return Graphics;
-    })();
-    phantom.Graphics = Graphics;
-})(phantom || (phantom = {}));
+var Rectantle = (function (_super) {
+    __extends(Rectantle, _super);
+    function Rectantle() {
+        _super.apply(this, arguments);
+    }
+    return Rectantle;
+})(Shape);
