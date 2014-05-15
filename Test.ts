@@ -12,6 +12,7 @@ module tbs{
 }
 
 class Box extends Sprite{
+	a:number;
 	constructor(){
 		super();
 		this.addEventListener(PEvent.ADDED, this.onAdded);
@@ -19,7 +20,7 @@ class Box extends Sprite{
 	}
 
 	onAdded(event:any):void{
-		console.log('onAdded');
+		console.log('onAdded', this.a);
 	}
 
 	onAddedToStage(event:any):void{

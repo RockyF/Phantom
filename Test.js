@@ -27,7 +27,7 @@ var Box = (function (_super) {
         this.addEventListener(PEvent.ADDED_TO_STAGE, this.onAddedToStage);
     }
     Box.prototype.onAdded = function (event) {
-        console.log('onAdded');
+        console.log('onAdded', this.a);
     };
 
     Box.prototype.onAddedToStage = function (event) {
