@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b14924bc-1c69-4b61-9639-a9c6167a800f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Main.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/graphics.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/quark.base-1.0.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/quark.d.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/boy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/quark.base-1.0.0.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.js" afterPath="$PROJECT_DIR$/src/Main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.ts" afterPath="$PROJECT_DIR$/src/Main.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.js" afterPath="$PROJECT_DIR$/Phantom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.ts" afterPath="$PROJECT_DIR$/Phantom.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/quark.d.ts" afterPath="$PROJECT_DIR$/src/quark.d.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Workspaces\idea\Canvas2D\src\graphics.html" afterPath="$PROJECT_DIR$/src/test.html" />
     </list>
     <ignored path="Canvas2D.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,7 +74,55 @@
     <favorites_list name="Canvas2D" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Main.ts" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Main.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="54" selection-start="2616" selection-end="2616" vertical-scroll-proportion="0.28042328" vertical-offset="1174" max-vertical-offset="1760">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="43" selection-start="363" selection-end="363" vertical-scroll-proportion="-4.24" vertical-offset="22" max-vertical-offset="480">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quark.base-1.0.0.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1693" column="17" selection-start="36979" selection-end="36979" vertical-scroll-proportion="0.0" vertical-offset="26818" max-vertical-offset="66912">
+              <folding>
+                <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simple1.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/simple1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="44" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.6" vertical-offset="1343" max-vertical-offset="2128">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imageloader.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="1" selection-start="904" selection-end="904" vertical-scroll-proportion="-10.8" vertical-offset="242" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -78,11 +130,6 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="RockyF" />
-      </list>
-    </option>
     <option name="SYNC_SETTING" value="DONT" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -92,14 +139,16 @@
         <option value="$PROJECT_DIR$/Main.js" />
         <option value="$PROJECT_DIR$/Phantom.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/FlashTest/src/FlashTest.as" />
         <option value="$PROJECT_DIR$/Main.ts" />
+        <option value="$PROJECT_DIR$/../../php/test.php" />
+        <option value="F:/Apache/conf/httpd.conf" />
+        <option value="$PROJECT_DIR$/Test.ts" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/Phantom.ts" />
-        <option value="$PROJECT_DIR$/casualjs/src/base/display/DisplayObject.js" />
-        <option value="$PROJECT_DIR$/Test.ts" />
-        <option value="$PROJECT_DIR$/quarkjs-master/js/quark.base-1.0.0.js" />
-        <option value="$PROJECT_DIR$/quarkjs-master/js/quark.d.ts" />
+        <option value="$PROJECT_DIR$/src/quark.d.ts" />
+        <option value="$PROJECT_DIR$/src/test.html" />
+        <option value="$PROJECT_DIR$/quarkjs-master/examples/imageloader.html" />
+        <option value="$PROJECT_DIR$/src/Main.ts" />
       </list>
     </option>
   </component>
@@ -119,7 +168,7 @@
     <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="Undo Check Out" />
     <OptionsSetting value="true" id="Get Latest Version" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -138,6 +187,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -173,7 +223,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,27 +232,22 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Roaming/npm/node_modules/typescript/bin/lib.d.ts" />
-    <property name="options.lastSelected" value="preferences.sourceCode.TypeScript" />
+    <property name="last_opened_file_path" value="E:/Worksapce/xiyou2_idea" />
+    <property name="options.lastSelected" value="preferences.sourceCode.HTML" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistory" value="" />
-    <property name="recentsLimit" value="5" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="LayoutCode.rearrangeEntriesECMA Script Level 4" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Workspaces\idea\Canvas2D\src" />
       <recent name="E:\Workspaces\idea\Canvas2D" />
-      <recent name="E:\Workspaces\idea\Canvas2D\casualjs" />
-      <recent name="E:\Workspaces\idea\Phantom" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Workspaces\idea\Canvas2D\src\assets" />
     </key>
   </component>
   <component name="RunManager">
@@ -472,23 +516,8 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
     <configuration useDefault="false">C:\Users\RockyF\AppData\Roaming\Subversion</configuration>
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -496,97 +525,59 @@
       <created>1399431250020</created>
       <updated>1399431250020</updated>
       <workItem from="1399431252844" duration="18883000" />
-      <workItem from="1399466726648" duration="6016000" />
-      <workItem from="1399559413375" duration="313000" />
-      <workItem from="1399559797818" duration="1663000" />
-      <workItem from="1399563431596" duration="4927000" />
-      <workItem from="1399569102947" duration="88000" />
-      <workItem from="1399646591082" duration="38000" />
-      <workItem from="1399646666822" duration="7156000" />
-      <workItem from="1399688779456" duration="13554000" />
-      <workItem from="1399710309948" duration="2752000" />
-      <workItem from="1399946388886" duration="15624000" />
-      <workItem from="1400038999018" duration="10338000" />
-      <workItem from="1400053517245" duration="621000" />
-      <workItem from="1400054471634" duration="10873000" />
-      <workItem from="1400116683977" duration="192000" />
+      <workItem from="1399466726648" duration="5850000" />
+      <workItem from="1399520275001" duration="22487000" />
+      <workItem from="1399598804608" duration="450000" />
+      <workItem from="1399599306192" duration="10978000" />
+      <workItem from="1399640968054" duration="80000" />
+      <workItem from="1399687529518" duration="948000" />
+      <workItem from="1400116977432" duration="4717000" />
+      <workItem from="1400134812595" duration="6148000" />
     </task>
-    <task id="LOCAL-00001" summary="haha">
-      <created>1399482969056</created>
-      <updated>1399482969056</updated>
+    <task id="LOCAL-00001" summary="Initial commit&#10;">
+      <created>1399552936717</created>
+      <updated>1399552936717</updated>
     </task>
-    <task id="LOCAL-00002" summary="haha">
-      <created>1399569128685</created>
-      <updated>1399569128685</updated>
+    <task id="LOCAL-00002" summary="Initial commit&#10;">
+      <created>1399641039420</created>
+      <updated>1399641039420</updated>
     </task>
-    <task id="LOCAL-00003" summary="haha">
-      <created>1399569144690</created>
-      <updated>1399569144690</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add EventListener.&#10;">
-      <created>1399695692464</created>
-      <updated>1399695692464</updated>
-    </task>
-    <task id="LOCAL-00005" summary="添加了事件分发器&#10;添加了鼠标事件类&#10;添加了displayobject的mouseMove事件">
-      <created>1399705281893</created>
-      <updated>1399705281893</updated>
-    </task>
-    <task id="LOCAL-00006" summary="nothing">
-      <created>1399714493769</created>
-      <updated>1399714493769</updated>
-    </task>
-    <task id="LOCAL-00007" summary="version-2&#10;">
-      <created>1399951117975</created>
-      <updated>1399951117975</updated>
-    </task>
-    <task id="LOCAL-00008" summary="version-2&#10;">
-      <created>1399987987289</created>
-      <updated>1399987987289</updated>
-    </task>
-    <task id="LOCAL-00009" summary="version-2&#10;">
-      <created>1400065224734</created>
-      <updated>1400065224734</updated>
-    </task>
-    <task id="LOCAL-00010" summary="version-2&#10;">
-      <created>1400065433685</created>
-      <updated>1400065433685</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93038000" />
+    <option name="totallyTimeSpent" value="70541000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41008404" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2998325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20392749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.71691793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -598,136 +589,168 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="haha" />
-    <MESSAGE value="add EventListener.&#10;" />
-    <MESSAGE value="添加了事件分发器&#10;添加了鼠标事件类&#10;添加了displayobject的mouseMove事件" />
-    <MESSAGE value="nothing" />
-    <MESSAGE value="version-2&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="version-2&#10;" />
+    <MESSAGE value="Initial commit&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit&#10;" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.base-1.0.0.js">
+    <entry file="file://$PROJECT_DIR$/src/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3489" column="20" selection-start="77348" selection-end="77348" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="66976">
+        <state line="51" column="0" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1440">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.d.ts">
+    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="59" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="4208">
-          <folding />
+        <state line="3155" column="9" selection-start="69630" selection-end="69630" vertical-scroll-proportion="0.0" vertical-offset="50480" max-vertical-offset="66976">
+          <folding>
+            <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Phantom.d.ts">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="48" selection-start="2044" selection-end="2044" vertical-scroll-proportion="0.0" vertical-offset="1480" max-vertical-offset="2048">
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="1" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="688" max-vertical-offset="1328">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="213" column="0" selection-start="4708" selection-end="4708" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5248">
+        <state line="217" column="17" selection-start="5637" selection-end="5637" vertical-scroll-proportion="0.0" vertical-offset="3299" max-vertical-offset="4304">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Phantom.d.ts">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="29" selection-start="3191" selection-end="3191" vertical-scroll-proportion="0.0" vertical-offset="1760" max-vertical-offset="2048">
-          <folding />
-        </state>
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test.ts">
+    <entry file="file://$PROJECT_DIR$/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="54" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="592">
+        <state line="107" column="0" selection-start="2355" selection-end="2355" vertical-scroll-proportion="0.0" vertical-offset="1712" max-vertical-offset="1920">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="12" selection-start="4735" selection-end="4735" vertical-scroll-proportion="0.0" vertical-offset="3190" max-vertical-offset="5248">
+        <state line="243" column="17" selection-start="6045" selection-end="6045" vertical-scroll-proportion="0.0" vertical-offset="3864" max-vertical-offset="4240">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="54" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="592">
+        <state line="22" column="1" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="272" />
+        <state line="10" column="7" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="256" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="107" column="0" selection-start="2355" selection-end="2355" vertical-scroll-proportion="0.0" vertical-offset="1712" max-vertical-offset="1920">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="17" selection-start="6045" selection-end="6045" vertical-scroll-proportion="0.0" vertical-offset="3864" max-vertical-offset="4240">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="1" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0" vertical-offset="155" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="256" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0" vertical-offset="672" max-vertical-offset="1520">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="16" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="3472">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="32" column="26" selection-start="787" selection-end="787" vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1248">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="16" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="3104">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2368">
           <folding />
         </state>
       </provider>
@@ -739,7 +762,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -749,192 +774,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test.js">
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/typescript/bin/typescript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1160" column="8" selection-start="82450" selection-end="82450" vertical-scroll-proportion="0.38947368" vertical-offset="18449" max-vertical-offset="982176" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/npm/node_modules/typescript/bin/lib.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8282" column="17" selection-start="276264" selection-end="276264" vertical-scroll-proportion="0.67017543" vertical-offset="132113" max-vertical-offset="238784" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="272" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.112676054" vertical-offset="0" max-vertical-offset="1312">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="254" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="272" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="34" selection-start="163" selection-end="163" vertical-scroll-proportion="0.2962963" vertical-offset="0" max-vertical-offset="324">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Test.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="605" selection-end="605" vertical-scroll-proportion="1.4320987" vertical-offset="48" max-vertical-offset="624">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/squirrel/Squirrel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="21" selection-start="367" selection-end="367" vertical-scroll-proportion="0.36619717" vertical-offset="0" max-vertical-offset="1184" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/button.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="7" selection-start="472" selection-end="472" vertical-scroll-proportion="-0.06037736" vertical-offset="240" max-vertical-offset="1440">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Phantom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="36" selection-start="381" selection-end="381" vertical-scroll-proportion="0.34594595" vertical-offset="0" max-vertical-offset="5552">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../IdeaProjects/muiltcube/Client/src/Client.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="21" selection-start="1581" selection-end="1581" vertical-scroll-proportion="0.25263157" vertical-offset="1056" max-vertical-offset="2368" />
+      </provider>
+    </entry>
+    <entry file="file://F:/Apache/conf/httpd.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="210" column="31" selection-start="8599" selection-end="8599" vertical-scroll-proportion="0.41902313" vertical-offset="3197" max-vertical-offset="8160" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../php/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="364" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="160" max-vertical-offset="256" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="18" selection-start="287" selection-end="287" vertical-scroll-proportion="0.33684212" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="3" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.98245615" vertical-offset="304" max-vertical-offset="1328">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="246" selection-end="246" vertical-scroll-proportion="0.29357797" vertical-offset="0" max-vertical-offset="545" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Phantom.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="15" selection-start="4754" selection-end="4754" vertical-scroll-proportion="1.4018018" vertical-offset="2710" max-vertical-offset="5248">
+        <state line="218" column="21" selection-start="5657" selection-end="5657" vertical-scroll-proportion="0.33931777" vertical-offset="3299" max-vertical-offset="4304">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.d.ts">
+    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="988" selection-end="988" vertical-scroll-proportion="0.4021544" vertical-offset="144" max-vertical-offset="4208">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1840">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/js/quark.base-1.0.0.js">
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/src/base/display/Stage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3489" column="20" selection-start="77348" selection-end="77348" vertical-scroll-proportion="-0.112280704" vertical-offset="55824" max-vertical-offset="66912">
+        <state line="108" column="37" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.0" vertical-offset="1398" max-vertical-offset="1968">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Phantom.d.ts">
+    <entry file="file://$PROJECT_DIR$/src/quark.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="48" selection-start="2044" selection-end="2044" vertical-scroll-proportion="-0.5859649" vertical-offset="1470" max-vertical-offset="2048">
+        <state line="462" column="4" selection-start="8914" selection-end="8914" vertical-scroll-proportion="0.33213645" vertical-offset="7207" max-vertical-offset="9680">
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>Flex 4.6.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>FlashTest|FlashTest</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>Flex 4.6.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1693" column="17" selection-start="36979" selection-end="36979" vertical-scroll-proportion="0.0" vertical-offset="26818" max-vertical-offset="66912">
+          <folding>
+            <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="1" selection-start="904" selection-end="904" vertical-scroll-proportion="-10.8" vertical-offset="242" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/simple1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="44" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.6" vertical-offset="1343" max-vertical-offset="2128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="43" selection-start="363" selection-end="363" vertical-scroll-proportion="-4.24" vertical-offset="22" max-vertical-offset="480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="54" selection-start="2616" selection-end="2616" vertical-scroll-proportion="0.28042328" vertical-offset="1174" max-vertical-offset="1760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
 

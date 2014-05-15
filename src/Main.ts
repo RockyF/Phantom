@@ -5,11 +5,30 @@
 
 window.onload = init;
 
+var frameCount = 0;
 var timer, container, context, params, width, height, fps, stage;
+var fpsContainer;
 
-function init()
+var img;
+
+function init(){
+	var loader = new Q.ImageLoader();
+	loader.addEventListener("loaded", onLoad);
+	loader.addEventListener("complete", onComplete);
+	loader.load([{id:"boy", src:"assets/boy.png", size:72}]);
+}
+
+function onLoad(e)
+{
+	img = e.image;
+	//Q.trace(e.target.getLoadedSize(), e.target.getTotalSize(), e.image.src);
+}
+
+function onComplete(e)
 {
 	container = Q.getDOM("container");
+
+	fpsContainer = Q.getDOM("fps");
 
 	params = Q.getUrlParams();
 	if(params.mode == undefined) params.mode = 2;
@@ -43,7 +62,7 @@ function init()
 
 function draw()
 {
-	var g1 = new Q.Graphics({width:200, height:200, x:20, y:20});
+	/*var g1 = new Q.Graphics({width:200, height:200, x:20, y:20});
 	g1.lineStyle(1, "#00f").beginFill("#0ff").drawRect(0.5, 0.5, 100, 100).endFill().cache();
 
 	var g2 = new Q.Graphics({width:200, height:200, x:150, y:20});
@@ -62,13 +81,25 @@ function draw()
 	var g6 = new Q.Graphics({width:500, height:500, x:200, y:-130});
 	g6.drawSVGPath(svgPath).lineStyle(4, "#0f0").endFill().cache();
 
-	stage.addChild(g1, g2, g3, g4, g5, g6);
-}
+	stage.addChild(g1, g2, g3, g4, g5, g6);*/
+	//stage.addChild(new Box({width:200, height:200, x:20, y:20}));
 
-var frameCount = 0;
-var fpsContainer = Q.getDOM("fps");
+	var bmp = new Q.Bitmap({image:img, rect:[0,0,64,85], regX:32, regY:42});
+	bmp.x = 100;
+	bmp.y = 10;
+	stage.addChild(bmp);
+}
 setInterval(function()
 {
 	fpsContainer.innerHTML = "FPS:" + frameCount;
 	frameCount = 0;
 }, 1000);
+
+class Box extends Q.Graphics{
+	constructor(props:any){
+		super(props);
+
+		this.lineStyle(1, "#00f").beginFill("#0ff").drawRect(0.5, 0.5, 100, 100).endFill().cache();
+	}
+
+}

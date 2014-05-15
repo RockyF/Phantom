@@ -237,7 +237,7 @@ declare module Q {
 	class ImageLoader extends EventDispatcher {
 		public loading:boolean;
 
-		constructor(source:any);
+		constructor(...source);
 
 		public load(source):void;
 
@@ -407,7 +407,7 @@ declare module Q {
 
 		public addChildAt(child:any, index:number):any;
 
-		public addChild(child:any):any;
+		public addChild(...child):any;
 
 		public removeChildAt(index:number):any;
 
