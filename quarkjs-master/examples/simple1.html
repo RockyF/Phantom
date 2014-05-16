@@ -27,10 +27,22 @@ window.onload = init;
 var container, stage, context, girl, boy, width, height, timer, fps, events, params;
 var bmp1, bmp2, mc;
 
-function init()
+function init(){
+	var loader = new Quark.ImageLoader();
+	loader.addEventListener("loaded", onLoad);
+	loader.addEventListener("complete", onComplete);
+	loader.load([{id:"girl", src:"images/girl.png", size:51}, {id:"boy", src:"images/boy.png", size:72}]);
+
+	function onLoad(e)
+	{
+		trace(e.target.getLoadedSize(), e.target.getTotalSize(), e.image.src);
+	}
+}
+
+function onComplete(e)
 {
 	container = Quark.getDOM("container");
-	girl = Quark.getDOM("girl"),
+	girl = e.images.girl;//Quark.getDOM("girl"),
 	boy = Quark.getDOM("boy");
 	events = Quark.supportTouch ? ["touchend"] : ["mouseup"];
 

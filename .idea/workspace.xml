@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b14924bc-1c69-4b61-9639-a9c6167a800f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/boy.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/quark.base-1.0.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/clover.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.js" afterPath="$PROJECT_DIR$/src/Main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.ts" afterPath="$PROJECT_DIR$/src/Main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.js" afterPath="$PROJECT_DIR$/Phantom.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Phantom.ts" afterPath="$PROJECT_DIR$/Phantom.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/quark.d.ts" afterPath="$PROJECT_DIR$/src/quark.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" afterPath="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Workspaces\idea\Canvas2D\src\graphics.html" afterPath="$PROJECT_DIR$/src/test.html" />
     </list>
     <ignored path="Canvas2D.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,19 +71,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.ts" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.ts" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="54" selection-start="2616" selection-end="2616" vertical-scroll-proportion="0.28042328" vertical-offset="1174" max-vertical-offset="1760">
+            <state line="95" column="25" selection-start="2974" selection-end="2974" vertical-scroll-proportion="-8.4" vertical-offset="1310" max-vertical-offset="1840">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test.html">
+      <file leaf-file-name="Phantom.ts" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Phantom.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="43" selection-start="363" selection-end="363" vertical-scroll-proportion="-4.24" vertical-offset="22" max-vertical-offset="480">
+            <state line="23" column="50" selection-start="408" selection-end="408" vertical-scroll-proportion="0.3943662" vertical-offset="144" max-vertical-offset="1248">
               <folding />
             </state>
           </provider>
@@ -96,28 +92,10 @@
       <file leaf-file-name="quark.base-1.0.0.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1693" column="17" selection-start="36979" selection-end="36979" vertical-scroll-proportion="0.0" vertical-offset="26818" max-vertical-offset="66912">
+            <state line="3734" column="0" selection-start="82680" selection-end="82680" vertical-scroll-proportion="24.12" vertical-offset="60283" max-vertical-offset="66912">
               <folding>
                 <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simple1.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/simple1.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="44" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.6" vertical-offset="1343" max-vertical-offset="2128">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="imageloader.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="1" selection-start="904" selection-end="904" vertical-scroll-proportion="-10.8" vertical-offset="242" max-vertical-offset="720">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -144,11 +122,13 @@
         <option value="F:/Apache/conf/httpd.conf" />
         <option value="$PROJECT_DIR$/Test.ts" />
         <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/Phantom.ts" />
         <option value="$PROJECT_DIR$/src/quark.d.ts" />
         <option value="$PROJECT_DIR$/src/test.html" />
         <option value="$PROJECT_DIR$/quarkjs-master/examples/imageloader.html" />
+        <option value="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" />
+        <option value="$PROJECT_DIR$/quarkjs-master/examples/graphics.html" />
         <option value="$PROJECT_DIR$/src/Main.ts" />
+        <option value="$PROJECT_DIR$/Phantom.ts" />
       </list>
     </option>
   </component>
@@ -187,8 +167,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,8 +199,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quarkjs-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Canvas2D" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="quarkjs-master" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,9 +270,26 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="117" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="124" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="917" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="117" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="124" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="123" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="917" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Workspaces\idea\Canvas2D\src\assets" />
       <recent name="E:\Workspaces\idea\Canvas2D\src" />
       <recent name="E:\Workspaces\idea\Canvas2D" />
     </key>
@@ -397,6 +444,10 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -417,10 +468,6 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
-      <method />
-    </configuration>
     <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" output_log_level="null" package_name="" scope="Class">
       <option name="BCName" value="" />
       <option name="launcherParameters">
@@ -433,6 +480,25 @@
       </option>
       <option name="moduleName" value="" />
       <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="GoTestConfiguration" factoryName="Go Test">
@@ -454,25 +520,6 @@
       <option name="testBeforeBenchmark" value="false" />
       <option name="goVetEnabled" value="false" />
       <module name="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -532,7 +579,8 @@
       <workItem from="1399640968054" duration="80000" />
       <workItem from="1399687529518" duration="948000" />
       <workItem from="1400116977432" duration="4717000" />
-      <workItem from="1400134812595" duration="6148000" />
+      <workItem from="1400134812595" duration="6455000" />
+      <workItem from="1400208015591" duration="7961000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1399552936717</created>
@@ -542,11 +590,15 @@
       <created>1399641039420</created>
       <updated>1399641039420</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ddd">
+      <created>1400155422522</created>
+      <updated>1400155422522</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70541000" />
+    <option name="totallyTimeSpent" value="78809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -556,7 +608,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2998325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30084035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -564,7 +616,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -572,12 +624,12 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -593,7 +645,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Initial commit&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit&#10;" />
+    <MESSAGE value="ddd" />
+    <option name="LAST_COMMIT_MESSAGE" value="ddd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -601,6 +654,29 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1693" column="17" selection-start="36979" selection-end="36979" vertical-scroll-proportion="0.0" vertical-offset="27088" max-vertical-offset="66976">
+          <folding>
+            <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/simple1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="16" selection-start="2925" selection-end="2925" vertical-scroll-proportion="0.0" vertical-offset="1583" max-vertical-offset="2128">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="1" selection-start="904" selection-end="904" vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state line="51" column="0" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1440">
@@ -619,7 +695,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -638,7 +716,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -669,7 +749,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -700,7 +782,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -719,7 +803,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272" />
+        <state line="5" column="34" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -738,7 +824,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.ts">
@@ -757,7 +845,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.js">
@@ -831,12 +921,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="246" selection-end="246" vertical-scroll-proportion="0.29357797" vertical-offset="0" max-vertical-offset="545" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Phantom.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="21" selection-start="5657" selection-end="5657" vertical-scroll-proportion="0.33931777" vertical-offset="3299" max-vertical-offset="4304">
+        <state line="10" column="7" selection-start="246" selection-end="246" vertical-scroll-proportion="0.29357797" vertical-offset="0" max-vertical-offset="545">
           <folding />
         </state>
       </provider>
@@ -852,51 +937,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quarkjs-master/src/base/display/Stage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="37" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.0" vertical-offset="1398" max-vertical-offset="1968">
+        <state line="108" column="37" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.0" vertical-offset="1398" max-vertical-offset="1968" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="548" selection-end="935" vertical-scroll-proportion="-5.72" vertical-offset="177" max-vertical-offset="720">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/quark.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="462" column="4" selection-start="8914" selection-end="8914" vertical-scroll-proportion="0.33213645" vertical-offset="7207" max-vertical-offset="9680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1693" column="17" selection-start="36979" selection-end="36979" vertical-scroll-proportion="0.0" vertical-offset="26818" max-vertical-offset="66912">
-          <folding>
-            <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/imageloader.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="1" selection-start="904" selection-end="904" vertical-scroll-proportion="-10.8" vertical-offset="242" max-vertical-offset="720">
+        <state line="523" column="8" selection-start="10132" selection-end="10132" vertical-scroll-proportion="0.33333334" vertical-offset="8183" max-vertical-offset="9680">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/simple1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="44" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.6" vertical-offset="1343" max-vertical-offset="2128">
+        <state line="33" column="29" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.18490566" vertical-offset="430" max-vertical-offset="2320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quarkjs-master/examples/graphics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="106" selection-start="0" selection-end="3127" vertical-scroll-proportion="0.48301888" vertical-offset="864" max-vertical-offset="1616">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3734" column="0" selection-start="82680" selection-end="82680" vertical-scroll-proportion="24.12" vertical-offset="60283" max-vertical-offset="66912">
+          <folding>
+            <marker date="1400063912733" expanded="false" signature="93004:93048" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://H:/Phantom.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="373" selection-end="373" vertical-scroll-proportion="-4.8591547" vertical-offset="3160" max-vertical-offset="3776">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="43" selection-start="363" selection-end="363" vertical-scroll-proportion="-4.24" vertical-offset="22" max-vertical-offset="480">
+        <state line="13" column="0" selection-start="517" selection-end="517" vertical-scroll-proportion="0.39245284" vertical-offset="0" max-vertical-offset="530">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="54" selection-start="2616" selection-end="2616" vertical-scroll-proportion="0.28042328" vertical-offset="1174" max-vertical-offset="1760">
+        <state line="95" column="25" selection-start="2974" selection-end="2974" vertical-scroll-proportion="-8.4" vertical-offset="1310" max-vertical-offset="1840">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phantom.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="50" selection-start="408" selection-end="408" vertical-scroll-proportion="0.3943662" vertical-offset="144" max-vertical-offset="1248">
           <folding />
         </state>
       </provider>

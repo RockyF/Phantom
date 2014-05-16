@@ -15,7 +15,7 @@ function init(){
 	var loader = new Q.ImageLoader();
 	loader.addEventListener("loaded", onLoad);
 	loader.addEventListener("complete", onComplete);
-	loader.load([{id:"boy", src:"assets/boy.png", size:72}]);
+	loader.load([{id:"clover", src:"assets/clover.png", size:72}]);
 }
 
 function onLoad(e)
@@ -31,7 +31,7 @@ function onComplete(e)
 	fpsContainer = Q.getDOM("fps");
 
 	params = Q.getUrlParams();
-	if(params.mode == undefined) params.mode = 2;
+	if(params.mode == undefined) params.mode = 1;
 
 	width = 480;
 	height = 320;
@@ -82,12 +82,9 @@ function draw()
 	g6.drawSVGPath(svgPath).lineStyle(4, "#0f0").endFill().cache();
 
 	stage.addChild(g1, g2, g3, g4, g5, g6);*/
-	//stage.addChild(new Box({width:200, height:200, x:20, y:20}));
-
-	var bmp = new Q.Bitmap({image:img, rect:[0,0,64,85], regX:32, regY:42});
-	bmp.x = 100;
-	bmp.y = 10;
-	stage.addChild(bmp);
+	var grp = new Grp({});
+	grp.x = 200;
+	stage.addChild(grp);
 }
 setInterval(function()
 {
@@ -95,11 +92,19 @@ setInterval(function()
 	frameCount = 0;
 }, 1000);
 
+class Grp extends Q.DisplayObjectContainer{
+	constructor(props:any){
+		super(props);
+
+		this.addChild(new Box({width:200, height:200, x:200, y:20}));
+	}
+}
+
 class Box extends Q.Graphics{
 	constructor(props:any){
 		super(props);
 
-		this.lineStyle(1, "#00f").beginFill("#0ff").drawRect(0.5, 0.5, 100, 100).endFill().cache();
+		this.beginRadialGradientFill(5, 5, 0, 5, 5, 5, ["rgba(100, 100, 100, 1)", "rgba(100, 100, 100, 0)"], [0, 1]).drawCircle(0, 0, 5).endFill().cache();
 	}
 
 }
