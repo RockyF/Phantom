@@ -14,7 +14,12 @@ class StringUtils {
 }
 
 class ColorUtils{
-	static
+	static toWeb(color:number, alpha:number = 1):string{
+		var b:number = color % 256;
+		var g:number = (color >> 8) % 256;
+		var r:number = color >> 16;
+		return StringUtils.format('rgba({0}, {1}, {2}, {3})', r, g, b, alpha);
+	}
 }
 
 class Color {

@@ -19,7 +19,7 @@ class Box extends Sprite{
 		this.addEventListener(PEvent.ADDED_TO_STAGE, this.onAddedToStage);
 	}
 
-	onAdded(event:any):void{
+	onAdded(event:any = null):void{
 		console.log('onAdded', this.a);
 	}
 

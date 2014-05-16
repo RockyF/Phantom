@@ -2,6 +2,7 @@
  * Created by RockyF on 2014/5/15.
  */
 /// <reference path="quark.d.ts" />
+/// <reference path="../Phantom.ts" />
 
 window.onload = init;
 
@@ -104,7 +105,7 @@ class Box extends Q.Graphics{
 	constructor(props:any){
 		super(props);
 
-		this.beginRadialGradientFill(5, 5, 0, 5, 5, 5, ["rgba(100, 100, 100, 1)", "rgba(100, 100, 100, 0)"], [0, 1]).drawCircle(0, 0, 5).endFill().cache();
+		this.beginRadialGradientFill(5, 5, 0, 5, 5, 5, [ColorUtils.toWeb(0xFF), "rgba(100, 100, 100, 0)"], [0, 1]).drawCircle(0, 0, 5).endFill().cache();
 	}
 
 }
