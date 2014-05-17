@@ -2,31 +2,27 @@
  * Created by RockyF on 2014/5/15.
  */
 /// <reference path="quark.d.ts" />
-/// <reference path="../Phantom.ts" />
+/// <reference path="Phantom.ts" />
 
 window.onload = init;
 
 var frameCount = 0;
 var timer, container, context, params, width, height, fps, stage;
 var fpsContainer;
+var loader;
 
-var img;
+var ballRed;
 
 function init(){
-	var loader = new Q.ImageLoader();
-	loader.addEventListener("loaded", onLoad);
+	loader = new Q.ImageLoader();
 	loader.addEventListener("complete", onComplete);
-	loader.load([{id:"clover", src:"assets/clover.png", size:72}]);
-}
-
-function onLoad(e)
-{
-	img = e.image;
-	//Q.trace(e.target.getLoadedSize(), e.target.getTotalSize(), e.image.src);
+	loader.load([{id:"ball_red", src:"assets/ball_red.png", size:72}]);
 }
 
 function onComplete(e)
 {
+	ballRed = loader.getImageById("ball_red");
+
 	container = Q.getDOM("container");
 
 	fpsContainer = Q.getDOM("fps");
@@ -36,7 +32,7 @@ function onComplete(e)
 
 	width = 480;
 	height = 320;
-	fps = 60;
+	fps = 24;
 
 	if(params.mode == 1)
 	{
@@ -58,54 +54,108 @@ function onComplete(e)
 	timer.addListener(Q.Tween);
 	timer.start();
 
-	draw();
+	stage.addChild(new Root());
 }
 
-function draw()
-{
-	/*var g1 = new Q.Graphics({width:200, height:200, x:20, y:20});
-	g1.lineStyle(1, "#00f").beginFill("#0ff").drawRect(0.5, 0.5, 100, 100).endFill().cache();
+class Root extends Q.DisplayObjectContainer{
+	particles:any = [];
+	particlesRecycle:any = [];
 
-	var g2 = new Q.Graphics({width:200, height:200, x:150, y:20});
-	g2.lineStyle(10, "#431608").beginFill("#0ff").drawRoundRect(5, 5, 90, 90, 20).endFill().cache();
+	countPerFrame:number = 1;
 
-	var g3 = new Q.Graphics({width:200, height:200, x:270, y:20});
-	g3.lineStyle(2, "#7db9e8").drawCircle(2, 2, 50).beginRadialGradientFill(50, 50, 0, 50, 50, 50, ["#7db9e8", "#1E5799"], [0, 1]).endFill().cache();
+	constructor(){
+		super({});
+	}
 
-	var g4 = new Q.Graphics({width:200, height:200, x:20, y:150});
-	g4.drawEllipse(5, 5, 150, 100).lineStyle(5, "#12161f").beginFill("#0ff").endFill().cache();
+	update(timeInfo:any):boolean{
+		var i, len, particle;
+		for(i = 0; i < this.countPerFrame; i++){
+			this.particles.push(this.createParticle());
+		}
 
-	var g5 = new Q.Graphics({width:200, height:200, x:200, y:150});
-	g5.lineStyle(4, "#111").beginLinearGradientFill(0, 0, 60, 0, ["#959595", "#010101", "#4e4e4e", "#383838", "#1b1b1b"], [0, 0.5, 0.76, 0.87, 1]).drawRect(2, 2, 60, 100).endFill().cache();
+		for(i = 0, len = this.particles.length; i < len; i++){
+			particle = this.particles[i];
+			particle.update();
 
-	var svgPath = "M153 334 C153 334 151 334 151 334 C151 339 153 344 156 344 C164 344 171 339 171 334 C171 322 164 314 156 314 C142 314 131 322 131 334 C131 350 142 364 156 364 C175 364 191 350 191 334 C191 311 175 294 156 294 C131 294 111 311 111 334 C111 361 131 384 156 384 C186 384 211 361 211 334 C211 300 186 274 156 274";
-	var g6 = new Q.Graphics({width:500, height:500, x:200, y:-130});
-	g6.drawSVGPath(svgPath).lineStyle(4, "#0f0").endFill().cache();
+			if(Root.checkRecycle(particle)){
+				this.recycleParticle(particle);
+				len --;
+			}
+		}
 
-	stage.addChild(g1, g2, g3, g4, g5, g6);*/
-	var grp = new Grp({});
-	grp.x = 200;
-	stage.addChild(grp);
-}
-setInterval(function()
-{
-	fpsContainer.innerHTML = "FPS:" + frameCount;
-	frameCount = 0;
-}, 1000);
+		return true;
+	}
 
-class Grp extends Q.DisplayObjectContainer{
-	constructor(props:any){
-		super(props);
+	static checkRecycle(particle:any):boolean{
+		var userData:any = particle.userData;
+		return userData.x < 0 || userData.y < 0 || userData.x > stage.width || userData.y > stage.height || userData.alpha <= 0;
+	}
 
-		this.addChild(new Box({width:200, height:200, x:200, y:20}));
+	createParticle():any{
+		var particle;
+		if(this.particlesRecycle.length > 0){
+			particle = this.particlesRecycle.pop();
+		}else{
+			particle = new Particle();
+			particle.userData = new Ball();
+		}
+
+		particle.initData();
+		this.addChild(particle.userData);
+		return particle;
+	}
+
+	recycleParticle(particle:any):void{
+		this.particlesRecycle.push(particle);
+		this.removeChild(particle.userData);
+		this.particles.splice(this.particles.indexOf(particle.userData), 1);
 	}
 }
 
-class Box extends Q.Graphics{
-	constructor(props:any){
-		super(props);
+class Particle{
+	userData:any;
 
-		this.beginRadialGradientFill(5, 5, 0, 5, 5, 5, [ColorUtils.toWeb(0xFF), "rgba(100, 100, 100, 0)"], [0, 1]).drawCircle(0, 0, 5).endFill().cache();
+	x:number;
+	vx:number;
+	y:number;
+	vy:number;
+	a:number;
+	va:number;
+	r:number;
+	vr:number;
+
+	initData():void{
+		this.x = 200;
+		this.y = 200;
+		this.a = 1;
+		this.r = 0;
+		this.vx = Math.random() * 4 - 2;
+		this.vy = 0;
+		this.va = - Math.random() * 0.1 - 0.01;
+		this.vr = Math.random() * 1;
+
+		this.update();
+	}
+
+	update(){
+		this.vy += -0.9;
+		this.x += this.vx;
+		this.y += this.vy;
+		this.a += this.va;
+		this.r += this.vr;
+
+		this.userData.x = this.x;
+		this.userData.y = this.y;
+		this.userData.alpha = this.a;
+		this.userData.rotation = this.r;
+	}
+}
+
+class Ball extends Q.Bitmap{
+	constructor(size:number = 10){
+		super({image: ballRed});
+
+		//this.beginRadialGradientFill(5, 5, 0, 5, 5, 5, [ColorUtils.toWeb(0xFF0000), ColorUtils.toWeb(0xFF0000, 0)], [0, 1]).drawCircle(0, 0, 5).endFill().cache();
 	}
 
 }

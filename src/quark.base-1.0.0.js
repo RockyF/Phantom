@@ -1738,6 +1738,10 @@ ImageLoader.prototype.getTotalSize = function()
 	return this._totalSize;
 };
 
+ImageLoader.prototype.getImageById = function(id){
+	return this._images[id].image;
+};
+
 })();
 
 

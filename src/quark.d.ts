@@ -248,6 +248,8 @@ declare module Q {
 		public getLoadedSize():number;
 
 		public getTotalSize():number;
+
+		public getImageById(id:string):any;
 	}
 
 	class Tween {
@@ -403,7 +405,7 @@ declare module Q {
 		public eventChildren:boolean;
 		public autoSize:boolean;
 
-		constructor(props:any);
+		constructor(props?:any);
 
 		public addChildAt(child:any, index:number):any;
 

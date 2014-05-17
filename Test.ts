@@ -1,5 +1,4 @@
-
-/// <reference path="Phantom.ts" />
+/// <reference path="src/Phantom.ts" />
 
 module tbs{
 	export class DisplayTest extends Sprite{

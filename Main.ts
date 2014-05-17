@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 14-5-7.
  */
-/// <reference path="Phantom.ts" />
+/// <reference path="src/Phantom.ts" />
 
 window.onload = function(){
 	var canvas = document.getElementById('canvasStage');

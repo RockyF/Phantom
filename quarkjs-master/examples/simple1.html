@@ -42,7 +42,7 @@ function init(){
 function onComplete(e)
 {
 	container = Quark.getDOM("container");
-	girl = e.images.girl;//Quark.getDOM("girl"),
+	girl = Quark.getDOM("girl"),
 	boy = Quark.getDOM("boy");
 	events = Quark.supportTouch ? ["touchend"] : ["mouseup"];
 
