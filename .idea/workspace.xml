@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b14924bc-1c69-4b61-9639-a9c6167a800f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/ball_red.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Phantom.js" />
-      <change type="DELETED" beforePath="E:\Workspaces\idea\Canvas2D\DisplayObject.ts" afterPath="" />
-      <change type="DELETED" beforePath="E:\Workspaces\idea\Canvas2D\Phantom.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.js" afterPath="$PROJECT_DIR$/src/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.ts" afterPath="$PROJECT_DIR$/Main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.ts" afterPath="$PROJECT_DIR$/src/Main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test.ts" afterPath="$PROJECT_DIR$/Test.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/quark.base-1.0.0.js" afterPath="$PROJECT_DIR$/src/quark.base-1.0.0.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/quark.d.ts" afterPath="$PROJECT_DIR$/src/quark.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" afterPath="$PROJECT_DIR$/quarkjs-master/examples/simple1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.html" afterPath="$PROJECT_DIR$/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test.html" afterPath="$PROJECT_DIR$/src/test.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Workspaces\idea\Canvas2D\Phantom.ts" afterPath="$PROJECT_DIR$/src/Phantom.ts" />
     </list>
     <ignored path="Canvas2D.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -114,7 +98,7 @@
       <file leaf-file-name="quark.base-1.0.0.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1029" column="47" selection-start="21910" selection-end="21910" vertical-scroll-proportion="0.33211008" vertical-offset="16219" max-vertical-offset="66976">
+            <state line="1028" column="33" selection-start="21864" selection-end="21864" vertical-scroll-proportion="0.3038674" vertical-offset="16219" max-vertical-offset="66976">
               <folding>
                 <marker date="1400305248404" expanded="false" signature="93091:93135" placeholder="..." />
               </folding>
@@ -740,7 +724,7 @@
       <workItem from="1400208015591" duration="8029000" />
       <workItem from="1400291709000" duration="360000" />
       <workItem from="1400292221373" duration="7958000" />
-      <workItem from="1400309226509" duration="8237000" />
+      <workItem from="1400309226509" duration="8907000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit&#10;">
       <created>1399552936717</created>
@@ -758,11 +742,15 @@
       <created>1400235109498</created>
       <updated>1400235109498</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="particle system">
+      <created>1400320134284</created>
+      <updated>1400320134284</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95432000" />
+    <option name="totallyTimeSpent" value="96102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -781,6 +769,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -791,7 +780,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -811,7 +799,8 @@
     <MESSAGE value="Initial commit&#10;" />
     <MESSAGE value="ddd" />
     <MESSAGE value="ddd&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="ddd&#10;" />
+    <MESSAGE value="particle system" />
+    <option name="LAST_COMMIT_MESSAGE" value="particle system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1113,7 +1102,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/quark.base-1.0.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1029" column="47" selection-start="21910" selection-end="21910" vertical-scroll-proportion="0.33211008" vertical-offset="16219" max-vertical-offset="66976">
+        <state line="1028" column="33" selection-start="21864" selection-end="21864" vertical-scroll-proportion="0.3038674" vertical-offset="16219" max-vertical-offset="66976">
           <folding>
             <marker date="1400305248404" expanded="false" signature="93091:93135" placeholder="..." />
           </folding>
